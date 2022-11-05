@@ -14,4 +14,17 @@ class PacienteModel{
         return  $paciente;
     }
 
+    function getAllMedicos(){
+        $query = $this->db->prepare('SELECT * FROM medico ORDER BY apellido ASC');
+        $query->execute();
+        $medicos = $query->fetchAll(PDO::FETCH_OBJ); 
+        return  $medicos;
+    }
+    
+    function getAllObrasSociales(){
+        $query = $this->db->prepare('SELECT * FROM obra_social ORDER BY nombre_os ASC');
+        $query->execute();
+        $obrasSociales = $query->fetchAll(PDO::FETCH_OBJ);
+        return  $obrasSociales;
+    }
 }

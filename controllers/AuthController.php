@@ -32,7 +32,7 @@ class AuthController{
             $paciente = $this->pacienteModel->getPaciente($dni);
             if(!empty($paciente)){
                 $this->authHelper->login($paciente);
-                header("Location: " . BASE_URL. '');
+                header("Location: " . BASE_URL. 'seleccionar');
             }else{
                $this->authView->showFormLogin('DNI incorecto.Intente nuevamente.'); 
             }
