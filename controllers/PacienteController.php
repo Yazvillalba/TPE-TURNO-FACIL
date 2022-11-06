@@ -32,7 +32,4 @@ class PacienteController{
         $this->view->showIndexTurnosMedico($turnosMedico);
         }
     }
-
-    
-
 }

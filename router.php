@@ -1,6 +1,7 @@
 <?php
 require_once 'controllers/AuthController.php';
 require_once 'controllers/PacienteController.php';
+require_once 'controllers/MedicoController.php';
 
 // defino la base url para la construccion de links con urls semánticas
 
@@ -18,6 +19,7 @@ $params = explode('/', $action);
 
 $authController = new AuthController();
 $pacienteController = new PacienteController();
+$medicoController = new MedicoController();
 
 switch ($params[0]) {
     case 'login':
@@ -35,6 +37,9 @@ switch ($params[0]) {
     case 'buscarMedico':     
         $pacienteController->indexMedico();
         break;
-   
+    case 'medicoTrabajaObraSocial':
+        $medicoController->trabajaConObraSocial(2,3);
+        break;
+
 }
 
