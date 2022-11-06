@@ -27,4 +27,13 @@ class PacienteModel{
         $obrasSociales = $query->fetchAll(PDO::FETCH_OBJ);
         return  $obrasSociales;
     }
+
+    function getDiasMedicoById($id){
+        $query = $this->db->prepare('SELECT m.apellido, m.nombre, m.dias, m.desde, m.hasta
+                                    FROM medico m
+                                    WHERE m.id = ?');
+        $query->execute([$id]);
+        $diasMedico = $query->fetchAll(PDO::FETCH_OBJ); 
+        return  $diasMedico;
+    }
 }
