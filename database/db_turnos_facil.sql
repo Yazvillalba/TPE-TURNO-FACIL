@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-10-2022 a las 19:51:30
+-- Tiempo de generación: 07-11-2022 a las 22:45:50
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.21
 
@@ -32,20 +32,24 @@ CREATE TABLE `MEDICO` (
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `matricula` varchar(30) NOT NULL,
-  `importe_consulta` double DEFAULT NULL
+  `importe_consulta` double DEFAULT NULL,
+  `especialidad` varchar(20) NOT NULL DEFAULT 'Clínico',
+  `dia` varchar(9) NOT NULL,
+  `desde` time NOT NULL,
+  `hasta` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `MEDICO`
 --
 
-INSERT INTO `MEDICO` (`id`, `nombre`, `apellido`, `matricula`, `importe_consulta`) VALUES
-(2, 'Carlos', 'Alvarez', '123', 1500),
-(3, 'Juan', 'Vena', '234', 2000),
-(4, 'Daira', 'Galcerán', '345', 5000),
-(5, 'Claudio', 'Carmusciano', '897', 4500),
-(6, 'Mari', 'Esteberena', '328972397', 1800),
-(7, 'Yazmín', 'Villalba', '4232342', NULL);
+INSERT INTO `MEDICO` (`id`, `nombre`, `apellido`, `matricula`, `importe_consulta`, `especialidad`, `dia`, `desde`, `hasta`) VALUES
+(2, 'Carlos', 'Alvarez', '123', 1500, 'Cardiologo', '', '00:00:00', '00:00:00'),
+(3, 'Juan', 'Vena', '234', 2000, 'Pediatra', '', '00:00:00', '00:00:00'),
+(4, 'Daira', 'Galcerán', '345', 5000, 'Clínico', '', '00:00:00', '00:00:00'),
+(5, 'Claudio', 'Carmusciano', '897', 4500, 'Clínico', '', '00:00:00', '00:00:00'),
+(6, 'Mari', 'Esteberena', '328972397', 1800, 'Quinesiólogo', '', '00:00:00', '00:00:00'),
+(7, 'Yazmín', 'Villalba', '4232342', NULL, 'Clínico', '', '00:00:00', '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -137,6 +141,7 @@ INSERT INTO `PACIENTE` (`nombre`, `apellido`, `direccion`, `telefono`, `mail`, `
 CREATE TABLE `TURNO` (
   `id` int(11) NOT NULL,
   `id_medico` int(11) NOT NULL,
+  `dia` varchar(9) NOT NULL,
   `fecha` date NOT NULL,
   `horario` varchar(5) NOT NULL,
   `id_paciente` int(11) DEFAULT NULL
@@ -146,18 +151,49 @@ CREATE TABLE `TURNO` (
 -- Volcado de datos para la tabla `TURNO`
 --
 
-INSERT INTO `TURNO` (`id`, `id_medico`, `fecha`, `horario`, `id_paciente`) VALUES
-(1, 2, '2022-11-08', '10:00', NULL),
-(2, 2, '2022-11-08', '10:30', NULL),
-(3, 2, '2022-11-08', '11:00', NULL),
-(4, 2, '2022-11-08', '11:30', NULL),
-(5, 2, '2022-11-08', '12:00', NULL),
-(6, 2, '2022-11-10', '15:00', NULL),
-(7, 2, '2022-11-10', '15:30', NULL),
-(8, 7, '2022-11-09', '10:00', NULL),
-(9, 7, '2022-11-09', '10:30', NULL),
-(10, 7, '2022-11-09', '11:00', NULL),
-(11, 7, '2022-11-09', '11:30', NULL);
+INSERT INTO `TURNO` (`id`, `id_medico`, `dia`, `fecha`, `horario`, `id_paciente`) VALUES
+(1, 2, 'Martes', '2022-11-08', '10:00', NULL),
+(2, 2, 'Martes', '2022-11-08', '10:30', NULL),
+(3, 2, 'Martes', '2022-11-08', '11:00', NULL),
+(4, 2, 'Martes', '2022-11-08', '11:30', NULL),
+(5, 2, 'Martes', '2022-11-08', '12:00', NULL),
+(6, 2, 'Martes', '2022-11-10', '15:00', NULL),
+(7, 2, 'Martes', '2022-11-10', '15:30', NULL),
+(8, 7, 'Miércoles', '2022-11-09', '10:00', NULL),
+(9, 7, 'Miércoles', '2022-11-09', '10:30', NULL),
+(10, 7, 'Miércoles', '2022-11-09', '11:00', NULL),
+(11, 7, 'Miércoles', '2022-11-09', '11:30', NULL),
+(12, 4, 'Viernes', '2022-11-11', '10:00', NULL),
+(13, 4, 'Viernes', '2022-11-11', '10:30', NULL),
+(14, 4, 'Viernes', '2022-11-11', '11:00', NULL),
+(15, 4, 'Viernes', '2022-11-11', '11:30', NULL),
+(16, 4, 'Viernes', '2022-11-11', '12:00', NULL),
+(17, 4, 'Viernes', '2022-11-11', '12:30', NULL),
+(18, 5, 'Lunes', '2022-11-14', '15:30', NULL),
+(19, 5, 'Lunes', '2022-11-14', '15:45', NULL),
+(20, 5, 'Lunes', '2022-11-14', '16:00', NULL),
+(21, 5, 'Lunes', '2022-11-14', '16:15', NULL),
+(22, 5, 'Lunes', '2022-11-14', '16:30', NULL),
+(23, 3, 'Jueves', '2022-11-10', '10:00', NULL),
+(24, 3, 'Jueves', '2022-11-10', '10:30', NULL),
+(25, 3, 'Jueves', '2022-11-10', '11:00', NULL),
+(26, 3, 'Jueves', '2022-11-10', '11:30', NULL),
+(27, 3, 'Jueves', '2022-11-10', '12:00', NULL),
+(28, 3, 'Jueves', '2022-11-10', '15:00', NULL),
+(29, 3, 'Jueves', '2022-11-10', '15:30', NULL),
+(30, 3, 'Jueves', '2022-11-10', '16:00', NULL),
+(31, 3, 'Jueves', '2022-11-10', '16:30', NULL),
+(32, 3, 'Jueves', '2022-11-10', '17:00', NULL),
+(43, 6, 'Jueves', '2022-11-10', '14:00', NULL),
+(44, 6, 'Jueves', '2022-11-10', '14:30', NULL),
+(45, 6, 'Jueves', '2022-11-10', '15:00', NULL),
+(46, 6, 'Jueves', '2022-11-10', '15:30', NULL),
+(47, 6, 'Jueves', '2022-11-10', '16:00', NULL),
+(48, 7, 'Miércoles', '2022-11-09', '15:00', NULL),
+(49, 7, 'Miércoles', '2022-11-09', '15:30', NULL),
+(50, 7, 'Miércoles', '2022-11-09', '16:00', NULL),
+(51, 7, 'Miércoles', '2022-11-09', '16:30', NULL),
+(52, 7, 'Miércoles', '2022-11-09', '17:00', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -230,7 +266,7 @@ ALTER TABLE `PACIENTE`
 -- AUTO_INCREMENT de la tabla `TURNO`
 --
 ALTER TABLE `TURNO`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Restricciones para tablas volcadas
