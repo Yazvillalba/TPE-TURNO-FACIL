@@ -37,13 +37,11 @@
             </form>            
         </div>
 
-<<<<<<< HEAD
-    <div>
-        {include file="templates/paciente/formSearch.tpl"}
-    </div>
-=======
-    
->>>>>>> 1d3c7774c6db3c61eddbd98c7794f083fb613abb
+
+        <div>
+            {include file="templates/paciente/formSearch.tpl"}
+        </div>
+
 
     </div>
 
