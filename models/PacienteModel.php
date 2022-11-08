@@ -36,4 +36,22 @@ class PacienteModel{
         $diasMedico = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $diasMedico;
     }
+    function getMedicoById($id){
+        $query = $this->db->prepare('SELECT * FROM medico WHERE id = ?');
+        $query->execute([$id]);
+        $medico = $query->fetch(PDO::FETCH_OBJ); 
+        return  $medico;
+    }
+
+    function getTurnosMedicoById($id){
+        $query = $this->db->prepare('SELECT m.apellido, m.nombre, t.fecha, t.horario , t.dia, t.id
+                                    FROM medico m JOIN turno t 
+                                    ON m.id = t.id_medico
+                                    WHERE m.id = ?');
+        $query->execute([$id]);
+        $turnosMedico = $query->fetchAll(PDO::FETCH_OBJ); 
+        return  $turnosMedico;
+    }
+
+ 
 }

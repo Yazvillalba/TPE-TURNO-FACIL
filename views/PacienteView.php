@@ -27,9 +27,19 @@ class PacienteView
         $this->smarty->display('../templates/paciente/mostrarHorariosAtencionPorMedico.tpl');
     }
 
+    function showIndexTurnosMedico($turnosMedico, $medico)
+    {
+        $this->smarty->assign('tituloIndexTurnos', 'Turnos disponibles');
+        $this->smarty->assign('tituloMedico', $medico);
+        $this->smarty->assign('turnos', $turnosMedico);
+        $this->smarty->display('../templates/paciente/seleccionarTurnosPorMedico.tpl');
+    }
+
     function showError($msgError = null)
     {
         $this->smarty->assign('error', $msgError);
         $this->smarty->display('../templates/error.tpl');
     }
+
+
 }
