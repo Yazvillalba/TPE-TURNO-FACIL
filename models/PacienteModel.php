@@ -29,7 +29,7 @@ class PacienteModel{
     }
 
     function getDiasMedicoById($id){
-        $query = $this->db->prepare('SELECT m.apellido, m.nombre, m.dias, m.desde, m.hasta
+        $query = $this->db->prepare('SELECT m.apellido, m.nombre, m.dia, m.desde, m.hasta, m.id
                                     FROM medico m
                                     WHERE m.id = ?');
         $query->execute([$id]);

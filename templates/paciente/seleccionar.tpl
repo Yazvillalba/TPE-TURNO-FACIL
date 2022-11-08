@@ -4,7 +4,7 @@
     <h3>{$tituloIndex}</h3>
 
         <div>
-            <form method="POST" class="d-flex mt-3 mb-5 col-3" action="buscarMedico">            
+            <form method="POST" class="d-flex mt-3 mb-5 col-3" action="buscarRangoHorarioMedico">            
                     <select name="medico" class="form-select   col-4" id="inputGroupSelect04" aria-label="Example select with button addon"
                         required>
                         <option value="false" disabled selected>Médicos</option>
@@ -17,17 +17,18 @@
                     </select>
                     
                      <button class="btn btn-outline-info" type="submit">Buscar</button> 
-            </form>            
+            </form>   
+       
         </div>
 
         <div>
-            <form method="POST" class="d-flex mt-3 mb-5 col-3" action="{BASE_URL}/buscarObraSocial">            
+            <form method="POST" class="d-flex mt-3 mb-5 col-3" action="buscarMedicosPorObraSocial">            
                     <select name="obraSocialSelect" class="form-select   col-4" id="inputGroupSelect04" aria-label="Example select with button addon"
                         required>
                         <option value="false" disabled selected>Obra Social</option>
-
-                        {foreach from=$obrasSociales item=$obraSocial}
-                            {if isset($obraSocial->id) }
+                                <option value="particular"> Atención Particular</option>
+                        {foreach from=$obrasSociales item=$obraSocial}        
+                            {if isset($obraSocial->id) }       
                                 <option value="{$obraSocial->id}">{$obraSocial->nombre_os}</option>
                             {/if}
                         {/foreach}
@@ -36,9 +37,13 @@
             </form>            
         </div>
 
+<<<<<<< HEAD
     <div>
         {include file="templates/paciente/formSearch.tpl"}
     </div>
+=======
+    
+>>>>>>> 1d3c7774c6db3c61eddbd98c7794f083fb613abb
 
     </div>
 

@@ -24,6 +24,13 @@ class PacienteController{
         $this->view->showIndexTurno($medicos, $obrasSociales);
     }
 
+    public function indexMedico($id)
+    {
+        $turnosMedico = $this->pacienteModel->getTurnosMedicoById($id);
+        $medico = $this->pacienteModel->getMedicoById($id);
+        $this->view->showIndexTurnosMedico($turnosMedico, $medico->apellido);
+    }
+
     public function indexDiasMedico()
     {
         if(!empty($_POST['medico']) ){
