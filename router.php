@@ -43,6 +43,8 @@ switch ($params[0]) {
     case 'medicoTrabajaObraSocial':
         $medicoController->trabajaConObraSocial(2,3);
         break;
-
+    case 'encontrarMedico':
+        $pacienteController->encontrarMedico();
+        break;
 }
 
