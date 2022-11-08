@@ -34,7 +34,7 @@ class AuthController{
                 $this->authHelper->login($paciente);
                 header("Location: " . BASE_URL. 'seleccionar');
             }else{
-               $this->authView->showFormLogin('DNI incorecto.Intente nuevamente.'); 
+                $this->authView->showFormLogin('DNI incorecto.Intente nuevamente.'); 
             }
 
         }

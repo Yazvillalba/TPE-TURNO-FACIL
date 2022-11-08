@@ -32,4 +32,17 @@ class PacienteController{
         $this->view->showIndexDiasMedico($diasMedico);
         }
     }
+
+    function encontrarMedico(){
+        if(!isset($_REQUEST['textToSearch']) || empty($_REQUEST['textToSearch'])){
+            $this->view->showError("Nada para buscar");
+            die();
+        }
+        $textToSearch = $_REQUEST['textToSearch'];
+        $textToSearch = '%'.$textToSearch.'%';
+        $searchMedico = $this->pacienteModel->searchMedicos($textToSearch);
+        $this->view->showIndexDiasMedico($searchMedico);
+
+    }
+
 }

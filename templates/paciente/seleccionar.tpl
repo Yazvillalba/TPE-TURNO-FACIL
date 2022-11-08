@@ -36,6 +36,9 @@
             </form>            
         </div>
 
+    <div>
+        {include file="templates/paciente/formSearch.tpl"}
+    </div>
 
     </div>
 

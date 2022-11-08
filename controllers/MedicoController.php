@@ -36,7 +36,7 @@ class MedicoController{
                     } 
                     function_alert("EL medico NO Trabaja con la Obra Social");
                     return false;
-               }
+                }
     }
 }
 
@@ -44,5 +44,5 @@ class MedicoController{
 function function_alert($message) {
     echo "<script>alert('$message');</script>";
 }
-   
+
 

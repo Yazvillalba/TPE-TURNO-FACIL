@@ -36,4 +36,12 @@ class PacienteModel{
         $diasMedico = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $diasMedico;
     }
+
+    function searchMedicos($textToSearch){
+        $query = $this->db->prepare('SELECT * FROM MEDICO
+                                    WHERE apellido LIKE ? ');
+        $query->execute(array($textToSearch));
+        $medicoSearched = $query->fetchAll(PDO::FETCH_OBJ); 
+        return  $medicoSearched;
+    }
 }
