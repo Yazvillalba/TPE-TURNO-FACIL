@@ -40,6 +40,14 @@ class PacienteView
         $this->smarty->assign('error', $msgError);
         $this->smarty->display('../templates/error.tpl');
     }
+    function showTurnoDetalles($turno, $paciente, $obraSocialPaciente)
+    {
+        $this->smarty->assign('tituloTurno', 'Confirmar Turno');
+        $this->smarty->assign('turno', $turno);
+        $this->smarty->assign('paciente', $paciente);
+        $this->smarty->assign('obraSocialPaciente', $obraSocialPaciente);
+        $this->smarty->display('../templates/paciente/turnoDetalle.tpl');
+    }
 
 
 }

@@ -39,7 +39,16 @@ class PacienteController{
         $this->view->showIndexDiasMedico($diasMedico);
         }
     }
-
+    public function tomarTurnoDetalles($id)
+    {
+        $isLoggedIn = $this->authHelper->getCurrentUserId();
+        $turno = $this->pacienteModel->getTurnoById($id);
+        $paciente = $this->pacienteModel->getPacienteById($isLoggedIn);
+        $obraSocialId = $paciente->id_obra_social;
+        $obraSocialPaciente = $this->pacienteModel->getPacienteObraSocial($obraSocialId);
+        $this->view->showTurnoDetalles($turno, $paciente, $obraSocialPaciente);
+    
+    }
     function encontrarMedico(){
         if(!isset($_REQUEST['textToSearch']) || empty($_REQUEST['textToSearch'])){
             $this->view->showError("Nada para buscar");

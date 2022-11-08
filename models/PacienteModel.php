@@ -52,7 +52,30 @@ class PacienteModel{
         $turnosMedico = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $turnosMedico;
     }
-
+    function getTurnoById($id){
+        $query = $this->db->prepare('SELECT m.*, t.*
+                                    FROM medico m JOIN turno t 
+                                    ON m.id = t.id_medico
+                                    WHERE t.id = ?');
+        $query->execute([$id]);
+        $turno = $query->fetch(PDO::FETCH_OBJ); 
+        return  $turno;
+    }
+    function getPacienteById($id){
+        $query = $this->db->prepare('SELECT *  FROM paciente 
+                                        WHERE id =?');
+        $query->execute([$id]);
+        $paciente = $query->fetch(PDO::FETCH_OBJ);
+        return  $paciente;
+    }
+    public function getPacienteObraSocial($id){
+        $query = $this->db->prepare('SELECT nombre_os 
+                                    FROM obra_social 
+                                    WHERE  id= ?');
+        $query->execute([$id]);
+        $nombreObraSocial = $query->fetch(PDO::FETCH_OBJ);
+        return  $nombreObraSocial;
+    }
  
 
     function searchMedicos($textToSearch){
