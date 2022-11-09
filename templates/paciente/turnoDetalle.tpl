@@ -31,7 +31,7 @@
                         <li class="list-group-item">Obra social: {$obraSocialPaciente->nombre_os}</li>
                     </ul>
 
-                   <td><a class="btn btn-secondary" href="{BASE_URL}confirmarTurno/[{$paciente->id_obra_social},{$turno->id_medico}]">Confirmar</a> </td>
+                   <td><a class="btn btn-secondary" style= "background-color:blueviolet;" href="{BASE_URL}confirmarTurno/{$turno->id}">Confirmar</a> </td>
                 </div>
             </div>
         </div>

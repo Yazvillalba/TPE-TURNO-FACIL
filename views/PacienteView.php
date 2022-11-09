@@ -27,9 +27,10 @@ class PacienteView
         $this->smarty->display('../templates/paciente/mostrarHorariosAtencionPorMedico.tpl');
     }
 
-    function showIndexTurnosMedico($turnosMedico, $medico)
+    function showIndexTurnosMedico($turnosMedico, $medico, $trabajaOS)
     {
         $this->smarty->assign('tituloIndexTurnos', 'Turnos disponibles');
+        $this->smarty->assign('trabajaOS', $trabajaOS);
         $this->smarty->assign('tituloMedico', $medico);
         $this->smarty->assign('turnos', $turnosMedico);
         $this->smarty->display('../templates/paciente/seleccionarTurnosPorMedico.tpl');
@@ -50,12 +51,10 @@ class PacienteView
         $this->smarty->display('../templates/paciente/turnoDetalle.tpl');
     }
 
-    function showIndexMedicosObraSocial($medicosPorObraSocial)  
+    function showIndexMedicosObraSocial($medicosPorObraSocial)
     {
         $this->smarty->assign('tituloObraSocial', '');
         $this->smarty->assign('medicos', $medicosPorObraSocial);
         $this->smarty->display('../templates/paciente/seleccionarMedicosPorObraSocial.tpl');
     }
-
-
 }

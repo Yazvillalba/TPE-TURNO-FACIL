@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="">TURNO Fácil</a>
@@ -26,9 +26,13 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="">Home</a>
                         </li>
-                        <li class="nav-item ms-auto">
+                       <li class="nav-item ms-auto">
                         {if isset($smarty.session.USER_NAME)} 
-                            <a class="nav-link " aria-current="page" href="logout">{$smarty.session.USER_NAME}Logout</a>
+                            <div class="d-flex align-items-center">
+                                <span>{$smarty.session.USER_NAME}</span>
+                                <a class="nav-link " aria-current="page" href="logout"> Logout</a>
+                            </div>
+                            
                             {else}
                             <a class="nav-link " aria-current="page" href="login">Ingresar</a>
                             {/if}
