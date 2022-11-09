@@ -40,6 +40,7 @@ class PacienteView
         $this->smarty->assign('error', $msgError);
         $this->smarty->display('../templates/error.tpl');
     }
+
     function showTurnoDetalles($turno, $paciente, $obraSocialPaciente)
     {
         $this->smarty->assign('tituloTurno', 'Confirmar Turno');
@@ -47,6 +48,13 @@ class PacienteView
         $this->smarty->assign('paciente', $paciente);
         $this->smarty->assign('obraSocialPaciente', $obraSocialPaciente);
         $this->smarty->display('../templates/paciente/turnoDetalle.tpl');
+    }
+
+    function showIndexMedicosObraSocial($medicosPorObraSocial)  
+    {
+        $this->smarty->assign('tituloObraSocial', '');
+        $this->smarty->assign('medicos', $medicosPorObraSocial);
+        $this->smarty->display('../templates/paciente/seleccionarMedicosPorObraSocial.tpl');
     }
 
 

@@ -80,9 +80,22 @@ class PacienteModel{
 
     function searchMedicos($textToSearch){
         $query = $this->db->prepare('SELECT * FROM MEDICO
-                                    WHERE apellido LIKE ? ');
-        $query->execute(array($textToSearch));
+                                    WHERE apellido  LIKE ? OR nombre LIKE ? ');
+        $query->execute(array($textToSearch, $textToSearch));
         $medicoSearched = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $medicoSearched;
+    }
+
+    function getMedicosByObraSocial($obraSocial){
+        $query = $this->db->prepare('SELECT DISTINCT m.apellido, m.nombre, os.nombre_os, m.matricula, m.importe_consulta, m.especialidad,m.id
+                                    FROM obra_social os JOIN medico_os mo 
+                                    ON os.id = mo.id_obra_social
+                                    JOIN medico m 
+                                    ON m.id = mo.id_medico
+                                    WHERE os.id = ?
+                                    ORDER BY m.apellido ASC');
+        $query->execute([$obraSocial]);
+        $medicosPorObraSocial = $query->fetchAll(PDO::FETCH_OBJ);
+        return  $medicosPorObraSocial;
     }
 }

@@ -12,7 +12,7 @@ if (!empty($_GET['action'])){
     $action = $_GET['action'];
 }
 else {
-    $action = 'login';
+    $action = 'seleccionar';
 }
 
 $params = explode('/', $action);
@@ -41,7 +41,7 @@ switch ($params[0]) {
         $pacienteController->indexMedico($params[1]);
         break;    
     case 'medicoTrabajaObraSocial':
-        $medicoController->trabajaConObraSocial(2,3);
+        $medicoController->trabajaConObraSocial($params[1],$params[2]);
         break;
     case 'tomarTurno':     
         $pacienteController->tomarTurnoDetalles($params[1]);
@@ -49,5 +49,8 @@ switch ($params[0]) {
     case 'encontrarMedico':
         $pacienteController->encontrarMedico();
     break;
+    case 'buscarMedicosPorObraSocial':     
+        $pacienteController->indexObraSocial();
+        break; 
 }
 

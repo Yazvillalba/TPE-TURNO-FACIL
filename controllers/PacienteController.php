@@ -26,9 +26,10 @@ class PacienteController{
 
     public function indexMedico($id)
     {
-        $turnosMedico = $this->pacienteModel->getTurnosMedicoById($id);
-        $medico = $this->pacienteModel->getMedicoById($id);
-        $this->view->showIndexTurnosMedico($turnosMedico, $medico->apellido);
+        
+            $turnosMedico = $this->pacienteModel->getTurnosMedicoById($id);
+            $medico = $this->pacienteModel->getMedicoById($id);
+            $this->view->showIndexTurnosMedico($turnosMedico, $medico->apellido);     
     }
 
     public function indexDiasMedico()
@@ -58,7 +59,26 @@ class PacienteController{
         $textToSearch = '%'.$textToSearch.'%';
         $searchMedico = $this->pacienteModel->searchMedicos($textToSearch);
         $this->view->showIndexDiasMedico($searchMedico);
-
     }
 
-}
+    public function indexObraSocial()
+    {
+        if(empty($_POST['obraSocialSelect'])) {
+            $this->view->showError("Seleccionar Obra Social");
+        }else {
+            if(!empty($_POST['obraSocialSelect']) && ($_POST['obraSocialSelect']) != 'particular'){
+                $obraSocial_id = $_REQUEST['obraSocialSelect'];
+                $medicosPorObraSocial = $this->pacienteModel->getMedicosByObraSocial($obraSocial_id);
+                }
+        else {
+                $medicosPorObraSocial = $this->pacienteModel->getAllMedicos(); 
+            }
+        $this->view->showIndexMedicosObraSocial($medicosPorObraSocial);
+        }
+
+    }
+            
+        }
+        
+    
+
