@@ -68,6 +68,7 @@ class PacienteModel{
         $paciente = $query->fetch(PDO::FETCH_OBJ);
         return  $paciente;
     }
+
     public function getPacienteObraSocial($id){
         $query = $this->db->prepare('SELECT nombre_os 
                                     FROM obra_social 
@@ -77,12 +78,18 @@ class PacienteModel{
         return  $nombreObraSocial;
     }
  
-
     function searchMedicos($textToSearch){
         $query = $this->db->prepare('SELECT * FROM MEDICO
                                     WHERE apellido LIKE ? ');
         $query->execute(array($textToSearch));
         $medicoSearched = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $medicoSearched;
+    }
+
+    function getAllObraSocialXIdMedico($id_medico){
+        $query = $this->db->prepare('SELECT m.id_obra_social FROM medico_os m WHERE id_medico = ?');
+        $query->execute([$id_medico]);
+        $listadoObraSociales = $query->fetchAll(PDO::FETCH_OBJ); 
+        return  $listadoObraSociales;
     }
 }

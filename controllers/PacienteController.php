@@ -28,7 +28,19 @@ class PacienteController{
     {
         $turnosMedico = $this->pacienteModel->getTurnosMedicoById($id);
         $medico = $this->pacienteModel->getMedicoById($id);
-        $this->view->showIndexTurnosMedico($turnosMedico, $medico->apellido);
+        $pacienteID = $this->authHelper->getCurrentUserId();
+        $paciente = $this->pacienteModel->getPacienteById($pacienteID);
+
+        $os_medico= $this->pacienteModel->getAllObraSocialXIdMedico($id);
+        $trabajaOS = false;
+        if (!empty($os_medico)){ 
+                for ($i=0; $i < count($os_medico); $i++) {
+                    if ($paciente->id_obra_social == $os_medico[$i]->id_obra_social){
+                        $trabajaOS = true;
+                    } 
+                }   
+        }
+        $this->view->showIndexTurnosMedico($turnosMedico, $medico->apellido, $trabajaOS);
     }
 
     public function indexDiasMedico()

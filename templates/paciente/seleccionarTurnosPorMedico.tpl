@@ -5,7 +5,15 @@
     <h3>{$tituloIndexTurnos}</h3>
     
     <div>
+        <div class="d-flex justify-content-between">
         <h3>Médico: {$tituloMedico} </h3>
+        {if $trabajaOS === true}
+            <h5 class="alert alert-success w-25">Este medico trabaja con tu obra social</h5>  
+        
+        {else}
+            <h5 class="alert alert-danger w-25">Este medico no trabaja con tu obra social</h5>
+        {/if}
+        </div>
         
         <table class="table">
             <thead>
