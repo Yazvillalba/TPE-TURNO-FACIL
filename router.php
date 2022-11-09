@@ -7,6 +7,7 @@ require_once 'controllers/MedicoController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
+define('SELECCIONAR', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/seleccionar');
 
 if (!empty($_GET['action'])){
     $action = $_GET['action'];
@@ -45,6 +46,9 @@ switch ($params[0]) {
     break;  
     case 'encontrarMedico':
         $pacienteController->encontrarMedico();
+    break;
+    case 'confirmarTurno':     
+        $pacienteController->confirmarTurno($params[1]);
     break;
 }
 

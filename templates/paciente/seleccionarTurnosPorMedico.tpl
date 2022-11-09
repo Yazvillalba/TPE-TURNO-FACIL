@@ -28,12 +28,16 @@
 
             <tbody>
                 {foreach from=$turnos item=$turno }
+                {if $turno->id_paciente === null}
                     <tr>   
                         <td> {$turno->dia}</td>       
                         <td>{$turno->fecha}</td>
                         <td>{$turno->horario}</td>
-                        <td><a class="btn btn-secondary" href="{BASE_URL}tomarTurno/{$turno->id}">Tomar turno</a> </td>
+                        <td><a class="btn btn-secondary" style= "background-color:blueviolet;" href="{BASE_URL}tomarTurno/{$turno->id}">Tomar turno</a> </td>
                     </tr>
+                    
+                {/if}
+                    
                 {/foreach}     
             </tbody>
           

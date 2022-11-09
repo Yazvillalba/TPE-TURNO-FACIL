@@ -49,6 +49,9 @@ class PacienteView
         $this->smarty->assign('obraSocialPaciente', $obraSocialPaciente);
         $this->smarty->display('../templates/paciente/turnoDetalle.tpl');
     }
-
+    function renderHome(){
+        $this->smarty->assign('tituloIndex', 'Sacar turno');
+        $this->smarty->display('../templates/paciente/seleccionar.tpl');
+    }
 
 }

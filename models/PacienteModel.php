@@ -44,7 +44,7 @@ class PacienteModel{
     }
 
     function getTurnosMedicoById($id){
-        $query = $this->db->prepare('SELECT m.apellido, m.nombre, t.fecha, t.horario , t.dia, t.id
+        $query = $this->db->prepare('SELECT m.apellido, m.nombre, t.fecha, t.horario , t.dia, t.id, t.id_paciente
                                     FROM medico m JOIN turno t 
                                     ON m.id = t.id_medico
                                     WHERE m.id = ?');
@@ -91,5 +91,10 @@ class PacienteModel{
         $query->execute([$id_medico]);
         $listadoObraSociales = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $listadoObraSociales;
+    }
+    function takeTurn($id_paciente, $id_turno){
+        $query = $this->db->prepare('UPDATE `turno` SET id_paciente = ? WHERE id = ?');
+        $query->execute([$id_paciente, $id_turno]);
+        
     }
 }

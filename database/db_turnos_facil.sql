@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 07-11-2022 a las 22:45:50
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 7.4.21
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-11-2022 a las 01:08:29
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `MEDICO`
+-- Estructura de tabla para la tabla `medico`
 --
 
-CREATE TABLE `MEDICO` (
+CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
@@ -40,34 +40,34 @@ CREATE TABLE `MEDICO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `MEDICO`
+-- Volcado de datos para la tabla `medico`
 --
 
-INSERT INTO `MEDICO` (`id`, `nombre`, `apellido`, `matricula`, `importe_consulta`, `especialidad`, `dia`, `desde`, `hasta`) VALUES
-(2, 'Carlos', 'Alvarez', '123', 1500, 'Cardiologo', '', '00:00:00', '00:00:00'),
-(3, 'Juan', 'Vena', '234', 2000, 'Pediatra', '', '00:00:00', '00:00:00'),
-(4, 'Daira', 'Galcerán', '345', 5000, 'Clínico', '', '00:00:00', '00:00:00'),
-(5, 'Claudio', 'Carmusciano', '897', 4500, 'Clínico', '', '00:00:00', '00:00:00'),
-(6, 'Mari', 'Esteberena', '328972397', 1800, 'Quinesiólogo', '', '00:00:00', '00:00:00'),
-(7, 'Yazmín', 'Villalba', '4232342', NULL, 'Clínico', '', '00:00:00', '00:00:00');
+INSERT INTO `medico` (`id`, `nombre`, `apellido`, `matricula`, `importe_consulta`, `especialidad`, `dia`, `desde`, `hasta`) VALUES
+(2, 'Carlos', 'Alvarez', '123', 1500, 'Cardiologo', 'martes', '10:00:00', '15:30:00'),
+(3, 'Juan', 'Vena', '234', 2000, 'Pediatra', 'jueves', '10:00:00', '17:00:00'),
+(4, 'Daira', 'Galcerán', '345', 5000, 'Clínico', 'viernes', '10:00:00', '12:30:00'),
+(5, 'Claudio', 'Carmusciano', '897', 4500, 'Clínico', 'lunes', '15:30:00', '16:30:00'),
+(6, 'Mari', 'Esteberena', '328972397', 1800, 'kinesiólogo', 'jueves', '14:00:00', '16:00:00'),
+(7, 'Yazmín', 'Villalba', '4232342', NULL, 'Clínico', 'miercoles', '10:00:00', '17:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `MEDICO_OS`
+-- Estructura de tabla para la tabla `medico_os`
 --
 
-CREATE TABLE `MEDICO_OS` (
+CREATE TABLE `medico_os` (
   `id` int(11) NOT NULL,
   `id_medico` int(11) NOT NULL,
   `id_obra_social` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `MEDICO_OS`
+-- Volcado de datos para la tabla `medico_os`
 --
 
-INSERT INTO `MEDICO_OS` (`id`, `id_medico`, `id_obra_social`) VALUES
+INSERT INTO `medico_os` (`id`, `id_medico`, `id_obra_social`) VALUES
 (1, 2, 3),
 (2, 2, 4),
 (3, 5, 1),
@@ -86,19 +86,19 @@ INSERT INTO `MEDICO_OS` (`id`, `id_medico`, `id_obra_social`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `OBRA_SOCIAL`
+-- Estructura de tabla para la tabla `obra_social`
 --
 
-CREATE TABLE `OBRA_SOCIAL` (
+CREATE TABLE `obra_social` (
   `id` int(11) NOT NULL,
   `nombre_os` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `OBRA_SOCIAL`
+-- Volcado de datos para la tabla `obra_social`
 --
 
-INSERT INTO `OBRA_SOCIAL` (`id`, `nombre_os`) VALUES
+INSERT INTO `obra_social` (`id`, `nombre_os`) VALUES
 (1, 'OSDE'),
 (2, 'PAMI'),
 (3, 'IOMA'),
@@ -107,10 +107,10 @@ INSERT INTO `OBRA_SOCIAL` (`id`, `nombre_os`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PACIENTE`
+-- Estructura de tabla para la tabla `paciente`
 --
 
-CREATE TABLE `PACIENTE` (
+CREATE TABLE `paciente` (
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `direccion` varchar(30) DEFAULT NULL,
@@ -123,10 +123,10 @@ CREATE TABLE `PACIENTE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `PACIENTE`
+-- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `PACIENTE` (`nombre`, `apellido`, `direccion`, `telefono`, `mail`, `dni`, `id_obra_social`, `nro_afiliado`, `id`) VALUES
+INSERT INTO `paciente` (`nombre`, `apellido`, `direccion`, `telefono`, `mail`, `dni`, `id_obra_social`, `nro_afiliado`, `id`) VALUES
 ('Teresa', 'Calcuta', 'San Martín 2822', '2284123456', 'tcalcuta@gmail.com', 10222345, 2, '1212414', 1),
 ('Carlos', 'Menem', 'Urquiza 1234', '1128768373', 'cmenem@hotmail.com', 4123456, 1, '11111', 2),
 ('Marcela', 'Osam', 'Libertador 234', '1198765342', 'mosam@outoolk.com', 28321111, NULL, NULL, 3),
@@ -135,10 +135,10 @@ INSERT INTO `PACIENTE` (`nombre`, `apellido`, `direccion`, `telefono`, `mail`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `TURNO`
+-- Estructura de tabla para la tabla `turno`
 --
 
-CREATE TABLE `TURNO` (
+CREATE TABLE `turno` (
   `id` int(11) NOT NULL,
   `id_medico` int(11) NOT NULL,
   `dia` varchar(9) NOT NULL,
@@ -148,20 +148,20 @@ CREATE TABLE `TURNO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `TURNO`
+-- Volcado de datos para la tabla `turno`
 --
 
-INSERT INTO `TURNO` (`id`, `id_medico`, `dia`, `fecha`, `horario`, `id_paciente`) VALUES
-(1, 2, 'Martes', '2022-11-08', '10:00', NULL),
-(2, 2, 'Martes', '2022-11-08', '10:30', NULL),
+INSERT INTO `turno` (`id`, `id_medico`, `dia`, `fecha`, `horario`, `id_paciente`) VALUES
+(1, 2, 'Martes', '2022-11-08', '10:00', 1),
+(2, 2, 'Martes', '2022-11-08', '10:30', 1),
 (3, 2, 'Martes', '2022-11-08', '11:00', NULL),
 (4, 2, 'Martes', '2022-11-08', '11:30', NULL),
 (5, 2, 'Martes', '2022-11-08', '12:00', NULL),
 (6, 2, 'Martes', '2022-11-10', '15:00', NULL),
 (7, 2, 'Martes', '2022-11-10', '15:30', NULL),
-(8, 7, 'Miércoles', '2022-11-09', '10:00', NULL),
-(9, 7, 'Miércoles', '2022-11-09', '10:30', NULL),
-(10, 7, 'Miércoles', '2022-11-09', '11:00', NULL),
+(8, 7, 'Miércoles', '2022-11-09', '10:00', 1),
+(9, 7, 'Miércoles', '2022-11-09', '10:30', 1),
+(10, 7, 'Miércoles', '2022-11-09', '11:00', 4),
 (11, 7, 'Miércoles', '2022-11-09', '11:30', NULL),
 (12, 4, 'Viernes', '2022-11-11', '10:00', NULL),
 (13, 4, 'Viernes', '2022-11-11', '10:30', NULL),
@@ -200,36 +200,36 @@ INSERT INTO `TURNO` (`id`, `id_medico`, `dia`, `fecha`, `horario`, `id_paciente`
 --
 
 --
--- Indices de la tabla `MEDICO`
+-- Indices de la tabla `medico`
 --
-ALTER TABLE `MEDICO`
+ALTER TABLE `medico`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `MEDICO_OS`
+-- Indices de la tabla `medico_os`
 --
-ALTER TABLE `MEDICO_OS`
+ALTER TABLE `medico_os`
   ADD PRIMARY KEY (`id`,`id_medico`,`id_obra_social`),
   ADD KEY `fk_medico` (`id_medico`),
   ADD KEY `fk_obra_social` (`id_obra_social`);
 
 --
--- Indices de la tabla `OBRA_SOCIAL`
+-- Indices de la tabla `obra_social`
 --
-ALTER TABLE `OBRA_SOCIAL`
+ALTER TABLE `obra_social`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `PACIENTE`
+-- Indices de la tabla `paciente`
 --
-ALTER TABLE `PACIENTE`
+ALTER TABLE `paciente`
   ADD PRIMARY KEY (`id`),
   ADD KEY `obra_social_fk` (`id_obra_social`);
 
 --
--- Indices de la tabla `TURNO`
+-- Indices de la tabla `turno`
 --
-ALTER TABLE `TURNO`
+ALTER TABLE `turno`
   ADD PRIMARY KEY (`id`),
   ADD KEY `medico_fk` (`id_medico`),
   ADD KEY `paciente_fk` (`id_paciente`);
@@ -239,33 +239,33 @@ ALTER TABLE `TURNO`
 --
 
 --
--- AUTO_INCREMENT de la tabla `MEDICO`
+-- AUTO_INCREMENT de la tabla `medico`
 --
-ALTER TABLE `MEDICO`
+ALTER TABLE `medico`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `MEDICO_OS`
+-- AUTO_INCREMENT de la tabla `medico_os`
 --
-ALTER TABLE `MEDICO_OS`
+ALTER TABLE `medico_os`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `OBRA_SOCIAL`
+-- AUTO_INCREMENT de la tabla `obra_social`
 --
-ALTER TABLE `OBRA_SOCIAL`
+ALTER TABLE `obra_social`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `PACIENTE`
+-- AUTO_INCREMENT de la tabla `paciente`
 --
-ALTER TABLE `PACIENTE`
+ALTER TABLE `paciente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `TURNO`
+-- AUTO_INCREMENT de la tabla `turno`
 --
-ALTER TABLE `TURNO`
+ALTER TABLE `turno`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
@@ -273,24 +273,24 @@ ALTER TABLE `TURNO`
 --
 
 --
--- Filtros para la tabla `MEDICO_OS`
+-- Filtros para la tabla `medico_os`
 --
-ALTER TABLE `MEDICO_OS`
-  ADD CONSTRAINT `fk_medico` FOREIGN KEY (`id_medico`) REFERENCES `MEDICO` (`id`),
-  ADD CONSTRAINT `fk_obra_social` FOREIGN KEY (`id_obra_social`) REFERENCES `OBRA_SOCIAL` (`id`);
+ALTER TABLE `medico_os`
+  ADD CONSTRAINT `fk_medico` FOREIGN KEY (`id_medico`) REFERENCES `medico` (`id`),
+  ADD CONSTRAINT `fk_obra_social` FOREIGN KEY (`id_obra_social`) REFERENCES `obra_social` (`id`);
 
 --
--- Filtros para la tabla `PACIENTE`
+-- Filtros para la tabla `paciente`
 --
-ALTER TABLE `PACIENTE`
-  ADD CONSTRAINT `obra_social_fk` FOREIGN KEY (`id_obra_social`) REFERENCES `OBRA_SOCIAL` (`id`);
+ALTER TABLE `paciente`
+  ADD CONSTRAINT `obra_social_fk` FOREIGN KEY (`id_obra_social`) REFERENCES `obra_social` (`id`);
 
 --
--- Filtros para la tabla `TURNO`
+-- Filtros para la tabla `turno`
 --
-ALTER TABLE `TURNO`
-  ADD CONSTRAINT `medico_fk` FOREIGN KEY (`id_medico`) REFERENCES `MEDICO` (`id`),
-  ADD CONSTRAINT `paciente_fk` FOREIGN KEY (`id_paciente`) REFERENCES `PACIENTE` (`id`);
+ALTER TABLE `turno`
+  ADD CONSTRAINT `medico_fk` FOREIGN KEY (`id_medico`) REFERENCES `medico` (`id`),
+  ADD CONSTRAINT `paciente_fk` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

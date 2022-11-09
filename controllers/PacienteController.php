@@ -72,5 +72,10 @@ class PacienteController{
         $this->view->showIndexDiasMedico($searchMedico);
 
     }
+    function confirmarTurno($id_turno){
+        $pacienteID = $this->authHelper->getCurrentUserId();
+        $this->pacienteModel->takeTurn($pacienteID, $id_turno);
+        Header("Location: " . SELECCIONAR);
+    }
 
 }

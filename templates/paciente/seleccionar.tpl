@@ -1,11 +1,11 @@
 {include file="templates/header.tpl"}
 
     <div class="container ">
-    <h3>{$tituloIndex}</h3>
+        <h3>{$tituloIndex}</h3>
 
         <div>
-            <form method="POST" class="d-flex mt-3 mb-5 col-3" action="buscarRangoHorarioMedico">            
-                    <select name="medico" class="form-select   col-4" id="inputGroupSelect04" aria-label="Example select with button addon"
+            <form method="POST" class="d-flex mt-3 mb-5 col-5" action="buscarRangoHorarioMedico">            
+                    <select name="medico" class="form-select   col-8" id="inputGroupSelect04" aria-label="Example select with button addon"
                         required>
                         <option value="false" disabled selected>Médicos</option>
 
@@ -22,8 +22,8 @@
         </div>
 
         <div>
-            <form method="POST" class="d-flex mt-3 mb-5 col-3" action="buscarMedicosPorObraSocial">            
-                    <select name="obraSocialSelect" class="form-select   col-4" id="inputGroupSelect04" aria-label="Example select with button addon"
+            <form method="POST" class="d-flex mt-3 mb-5 col-5" action="buscarMedicosPorObraSocial">            
+                    <select name="obraSocialSelect" class="form-select   col-8" id="inputGroupSelect04" aria-label="Example select with button addon"
                         required>
                         <option value="false" disabled selected>Obra Social</option>
                                 <option value="particular"> Atención Particular</option>
