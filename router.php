@@ -69,7 +69,16 @@ switch ($params[0]) {
     case 'administracion': //te dirige una vez loggeado el responsable a una "seccion" donde aparecen botones para elegir que hacer
         $authController->administracion();
     break;
-    
+    case 'agregarMedico': // muestra el formulario de alta de médico al APRETAR BOTÓn agregar médico;
+        $responsable->agregarMedico();
+    break;
+    case 'ingresarMedico': //al apretar botón INGRESAR del template de alta de médico, agrega los datos de un médico en la tabla medico de la BBDD
+        $responsable->insertMedico();
+    break;
+    case 'listarMedicos':  // al apretar BOTÓN LISTA MEDICOS muestra la tabla con los botones eliminar y modificar. FALTA ASOCIAR SECRETARIA
+        $responsable->listarMedicos();
+    break;
+    }  
     // lo que sigue a continuación agregado por Claudio para Secretaria:
   /*  case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
         $responsable->formAgregarSecretaria();
@@ -89,5 +98,5 @@ switch ($params[0]) {
     case 'confirmarSecretaria': //se apreta el boton confirmar datos y se hace el update en la table de BBDD
         $responsable->modificarSecretaria();
     break;
-}
+}*/
 

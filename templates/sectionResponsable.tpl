@@ -2,7 +2,7 @@
     <div>
     <div class="d-flex " style="white-space: pre-wrap;">
         <div>
-            <a class="btn btn-secondary btn-lg" href="formAgregarMedico" style="background-color: blueviolet;">Agregar Médico</a>
+            <a class="btn btn-secondary btn-lg" href="agregarMedico" style="background-color: blueviolet;">Agregar Médico</a>
 
         </div>
         <div>
