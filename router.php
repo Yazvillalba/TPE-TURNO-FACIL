@@ -13,7 +13,7 @@ if (!empty($_GET['action'])){
     $action = $_GET['action'];
 }
 else {
-    $action = 'seleccionar';
+    $action = 'login';
 }
 
 $params = explode('/', $action);
