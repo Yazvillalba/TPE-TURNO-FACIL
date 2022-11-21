@@ -28,5 +28,18 @@ class medicoModel{
         return  $medico;
     }
 
+    function getMedicoAsociado($id_secretaria = null){
+        if (isset($id_secretaria)) {
+            $query = $this->db->prepare('SELECT * FROM medico WHERE id_secretaria = ?');
+            $query->execute([$id_secretaria]);
 
+            $medicos = $query->fetchAll(PDO::FETCH_OBJ);
+            return $medicos;
+        } else {
+            $query = $this->db->prepare('SELECT * FROM medico');
+            $query->execute();
+            $medicos = $query->fetchAll(PDO::FETCH_OBJ);
+            return $medicos;
+        }
+    }
 }

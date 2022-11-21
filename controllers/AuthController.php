@@ -21,7 +21,13 @@ class AuthController{
     public function showLogin(){
         $this-> authView->showFormLogin();
     }
+    public function showLoginResponsable(){//login responsable muestra formulario para ingresar con usuario y contraseña
+        $this-> authView->showFormLoginResponsable();  
+    }
     
+    public function administracion(){
+        $this->authView->showFormAdministacion();
+    }
     
     //verifico  si los datos del  paciente  son correctos -> si el dni es igual al valor de la BD -> exito
 
@@ -44,7 +50,23 @@ class AuthController{
         }       
 
     }
+    public function loginResponsable(){ //LOGIN RESPONSABLE
+        if (!empty($_POST['usuario']) && !empty($_POST['password']) 
+        && isset($_POST['usuario']) && isset($_POST['password'])) {
+            $user = $_POST['usuario'];
+            $password = $_POST['password'];
+            $userData = $this->pacienteModel->getUserData($user);
+            if (!empty($userData) && password_verify($password, $userData->password)){
 
+                $this->authHelper->loginResponsable($userData);
+                header("Location: " . BASE_URL. 'administracion');
+            } else {
+                $this->authView->showFormLoginResponsable("Usuario y/o contraseña inválidos");
+            }
+        }else{
+            $this->authView->showFormLoginResponsable("Ingrese usuario y contraseña");
+        }
+    }
     public function logout(){
         $this->authHelper->logout();
     }
