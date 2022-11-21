@@ -2,7 +2,7 @@
 
     <div class="container ">
 
-    <h3>{$tituloIndexTurnos}</h3>
+    <h3 style="background-color: blueviolet; border-radius: 80px;width: 285px; text-align: center;">{$tituloIndexTurnos}</h3>
     
     <div>
         <div class="d-flex justify-content-between">
@@ -15,7 +15,7 @@
         {/if}
         </div>
         
-        <table class="table">
+        <table class="table" style="background-color: white;">
             <thead>
                 <tr>
                     <th scope="col">Dia</th>

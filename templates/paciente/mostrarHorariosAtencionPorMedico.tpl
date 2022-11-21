@@ -2,11 +2,11 @@
 
     <div class="container ">
     
-    <h3>{$tituloIndexDias}</h3>
+    <h3 style="background-color: blueviolet; border-radius: 80px;width: 285px; text-align: center;">{$tituloIndexDias}</h3>
 
      <div>
                 
-        <table class="table">
+        <table class="table"  style="background-color: white;" >
             <thead>
                 <tr>
                     <th scope="col">Apellido</th>
@@ -27,7 +27,7 @@
                         <td>{$medico->dia}</td>
                         <td>{$medico->desde}</td>
                         <td>{$medico->hasta}</td>
-                        <td><a class="btn btn-secondary" href="{BASE_URL}buscarMedico/{$medico->id}">Siguiente</a> </td>
+                        <td><a class="btn btn-secondary" href="{BASE_URL}buscarMedico/{$medico->id}"  style="background-color: blueviolet;">Siguiente</a> </td>
                     </tr>
                 {/foreach}     
             </tbody>

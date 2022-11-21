@@ -18,7 +18,7 @@
                                 {$error}
                             </div>
                         {/if}
-                        <button type="submit " class="btn btn-secondary mt-3">INGRESAR</button>
+                        <button type="submit " class="btn btn-secondary mt-3" style="background-color: blueviolet;">INGRESAR</button>
                 </form>
         </div>
         </div>
