@@ -71,7 +71,7 @@ switch ($params[0]) {
     break;
     
     // lo que sigue a continuación agregado por Claudio para Secretaria:
-    case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
+  /*  case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
         $responsable->formAgregarSecretaria();
     break;
     case 'ingresarSecretaria': //se verifican los datos ingresador en el formulario y agrega la secretaria a la BBDD
@@ -88,15 +88,6 @@ switch ($params[0]) {
     break;
     case 'confirmarSecretaria': //se apreta el boton confirmar datos y se hace el update en la table de BBDD
         $responsable->modificarSecretaria();
-    break;
-    case 'formAgregarMedico': //cuando se apreta el botón AGREGAR MÉDICO muestra el formulario de alta
-        $responsable->agregarMedico();
-    break;
-    case 'ingresarMedico': // muestra formulario de ALTA MËDICO para agregarlo a la tabla medico de la BBDD
-        $responsable->insertMedico();
-    break;
-    case 'listarMedicos': //muestra lista de medicos con boton eliminar y boton modificar
-        $responsable->listarMedicos();
     break;
 }
 
