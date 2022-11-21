@@ -13,6 +13,12 @@ class PacienteModel{
         $paciente = $query->fetch(PDO::FETCH_OBJ);
         return  $paciente;
     }
+    function getUserData($user){ //LOGIN RESPONSABLE
+        $query = $this->db->prepare('SELECT * FROM usuarios WHERE email = ?');
+        $query->execute([$user]);
+        $userData = $query->fetch(PDO::FETCH_OBJ);
+        return  $userData;
+    }
 
     function getAllMedicos(){
         $query = $this->db->prepare('SELECT * FROM medico ORDER BY apellido ASC');
