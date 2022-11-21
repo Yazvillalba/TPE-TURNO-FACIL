@@ -2,7 +2,7 @@
 require_once 'controllers/AuthController.php';
 require_once 'controllers/PacienteController.php';
 require_once 'controllers/MedicoController.php';
-
+require_once 'controllers/ResponsableController.php';
 // defino la base url para la construccion de links con urls semánticas
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -70,7 +70,7 @@ switch ($params[0]) {
     break;
     
     // lo que sigue a continuación agregado por Claudio para Secretaria:
-    case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
+  /*  case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
         $responsable->formAgregarSecretaria();
     break;
     case 'ingresarSecretaria': //se verifican los datos ingresador en el formulario y agrega la secretaria a la BBDD
@@ -87,6 +87,6 @@ switch ($params[0]) {
     break;
     case 'confirmarSecretaria': //se apreta el boton confirmar datos y se hace el update en la table de BBDD
         $responsable->modificarSecretaria();
-    break;
+    break;*/
 }
 
