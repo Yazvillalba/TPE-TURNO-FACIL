@@ -7,18 +7,3 @@
 .modal{
     display: block;
 }
-div.modal-content.seleccion{
-    width: 600%;
-}
-td{
-    vertical-align: middle;
-}
-/*.container.table-c{
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-}
-.body{
-    overflow: hidden;
-}
-*/
