@@ -8,6 +8,8 @@ require_once 'controllers/MedicoController.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
 define('SELECCIONAR', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/seleccionar');
+define('ADMINISTRACION', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/administracion');
+
 
 if (!empty($_GET['action'])){
     $action = $_GET['action'];
@@ -55,6 +57,15 @@ switch ($params[0]) {
         break; 
     case 'confirmarTurno':     
         $pacienteController->confirmarTurno($params[1]);
+    break;
+    case 'loginResponsable'://login responsable muestra formulario para ingresar con usuario y contraseña
+        $authController-> showLoginResponsable(); 
+    break;
+    case 'verifyResponsable'://verifica los datos del formulario, si esta bien el usuario y contraseña ingresa sino pone incorrecto
+        $authController->loginResponsable();
+    break;                                              
+    case 'administracion': //te dirige una vez loggeado el responsable a una "seccion" donde aparecen botones para elegir que hacer
+        $authController->administracion();
     break;
 }
 
