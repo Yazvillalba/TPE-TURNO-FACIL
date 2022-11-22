@@ -30,8 +30,9 @@ class AuthHelper{
         session_destroy();
         header('Location: '. LOGIN);
     }
+    
     function getCurrentUserId()
     {  
-        return $_SESSION['USER_ID'] = 1 ; //ver si se puede traer el dato del logueo
+        return $_SESSION['USER_ID']; 
     }
 }

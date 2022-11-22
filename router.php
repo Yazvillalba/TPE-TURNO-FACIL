@@ -16,7 +16,7 @@ if (!empty($_GET['action'])){
     $action = $_GET['action'];
 }
 else {
-    $action = 'seleccionar';
+    $action = 'login';
 }
 
 $params = explode('/', $action);
@@ -69,9 +69,27 @@ switch ($params[0]) {
     case 'administracion': //te dirige una vez loggeado el responsable a una "seccion" donde aparecen botones para elegir que hacer
         $authController->administracion();
     break;
-    
+    case 'agregarMedico': // muestra el formulario de alta de médico al APRETAR BOTÓn agregar médico;
+        $responsable->agregarMedico();
+    break;
+    case 'ingresarMedico': //al apretar botón INGRESAR del template de alta de médico, agrega los datos de un médico en la tabla medico de la BBDD
+        $responsable->insertMedico();
+    break;
+    case 'listarMedicos':  // al apretar BOTÓN LISTA MEDICOS muestra la tabla con los botones eliminar y modificar. FALTA ASOCIAR SECRETARIA
+        $responsable->listarMedicos();
+    break;
+    case 'borrarMedico': //cuando se apreta el boton eliminar se lo elimina de la BBDD
+        $responsable->deleteMedico($params[1]);
+    break;
+    case 'renderModificarMedico': //cuando apreta el boton modificar se abre el formulario para modificar los datos del medico
+        $responsable->renderModificarMedico($params[1]);
+    break;
+    case 'confirmarMedico': //cuando se confirman los datos del formulario se hace el update en la BBDD
+        $responsable->modificarMedico();
+    break;
+    }  
     // lo que sigue a continuación agregado por Claudio para Secretaria:
-    case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
+  /*  case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
         $responsable->formAgregarSecretaria();
     break;
     case 'ingresarSecretaria': //se verifican los datos ingresador en el formulario y agrega la secretaria a la BBDD
@@ -89,5 +107,5 @@ switch ($params[0]) {
     case 'confirmarSecretaria': //se apreta el boton confirmar datos y se hace el update en la table de BBDD
         $responsable->modificarSecretaria();
     break;
-}
+}*/
 

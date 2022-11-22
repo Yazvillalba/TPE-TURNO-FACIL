@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2022 a las 01:32:44
+-- Tiempo de generación: 21-11-2022 a las 21:09:35
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.0.23
 
@@ -157,6 +157,13 @@ CREATE TABLE `secretaria` (
   `apellido` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `secretaria`
+--
+
+INSERT INTO `secretaria` (`id_secretaria`, `nombre`, `apellido`) VALUES
+(16, 'Yazmin', 'Villalba');
+
 -- --------------------------------------------------------
 
 --
@@ -239,7 +246,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `id_rol`) VALUES
-(1, 'metodologia', 'metodologia@demo.com', '$2y$10$4iCfPDe5Uv8BnRm08xzfQeYXihf9nikS48qeufTYM2X6dw3pfyn92', 1);
+(1, 'metodologia', 'metodologia@demo.com', '$2y$10$PWFxMR5Tbh2m42F0d2x.fuqT/C2M8m8aN9WgHcFLqN/6t8uUSeLBi', 1);
 
 --
 -- Índices para tablas volcadas
@@ -338,7 +345,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secretaria`
 --
 ALTER TABLE `secretaria`
-  MODIFY `id_secretaria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_secretaria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
