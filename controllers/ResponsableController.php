@@ -74,4 +74,42 @@ class ResponsableController{
         }
     }
 
+    function renderModificarMedico($id){
+        $medicos = $this->pacienteModel->getAllMedicos();
+        $this->medicoView->renderModifyMedico($id, $medicos);
+    }
+    function modificarMedico(){
+        if (
+            !empty($_REQUEST['nombre']) && !empty($_REQUEST['apellido']) &&
+            !empty($_REQUEST['matricula']) && !empty($_REQUEST['importe_consulta']) &&
+            !empty($_REQUEST['especialidad']) && !empty($_REQUEST['dia']) &&
+            !empty($_REQUEST['desde']) && !empty($_REQUEST['hasta']) && !empty($_REQUEST['id']) &&
+            isset($_REQUEST['nombre']) && isset($_REQUEST['apellido']) &&
+            isset($_REQUEST['matricula']) && isset($_REQUEST['importe_consulta'])&&
+            isset($_REQUEST['especialidad']) && isset($_REQUEST['dia']) &&
+            isset($_REQUEST['desde']) && isset($_REQUEST['hasta']) && isset($_REQUEST['id'])
+        ){                  
+            $nombre = $_REQUEST['nombre'];
+            $apellido = $_REQUEST['apellido'];
+            $matricula = $_REQUEST['matricula'];
+            $importe_consulta = $_REQUEST['importe_consulta'];
+            $especialidad = $_REQUEST['especialidad'];
+            $dia = $_REQUEST['dia'];
+            $desde = $_REQUEST['desde'];
+            $hasta = $_REQUEST['hasta'];
+            $id = $_REQUEST['id'];
+     
+            $modify = $this->responsableModel->modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta,$id);
+            
+
+            if ($modify) {
+                header("Location: " . ADMINISTRACION);
+            } else {
+                $this->pacienteView->showError("No se pudo modificar");
+            }
+        } else {
+            $this->pacienteView->showError("Ingresos inválidos");
+        } 
+    } 
+
 }

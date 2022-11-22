@@ -81,6 +81,12 @@ switch ($params[0]) {
     case 'borrarMedico': //cuando se apreta el boton eliminar se lo elimina de la BBDD
         $responsable->deleteMedico($params[1]);
     break;
+    case 'renderModificarMedico': //cuando apreta el boton modificar se abre el formulario para modificar los datos del medico
+        $responsable->renderModificarMedico($params[1]);
+    break;
+    case 'confirmarMedico': //cuando se confirman los datos del formulario se hace el update en la BBDD
+        $responsable->modificarMedico();
+    break;
     }  
     // lo que sigue a continuación agregado por Claudio para Secretaria:
   /*  case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla

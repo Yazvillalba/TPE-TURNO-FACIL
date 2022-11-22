@@ -24,6 +24,20 @@ class ResponsableModel{
         $query->execute([$id]);
     }
 
+    function modifyMedico($id, $nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta){
+        $query =  $this->db->prepare('UPDATE `medico` 
+        SET `nombre` = ?, 
+        `apellido` = ?,
+        `matricula` = ?
+        `importe_consulta` = ?,
+        `especialidad` = ?,
+        `dia` = ?,
+        `desde` = ?,
+        `hasta` = ?
+        WHERE `medico`.`id` = ?'); 
+        return $query->execute([$id,$nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta]);
+    }
+
 
 
 }

@@ -8,7 +8,6 @@ class MedicoView{
         $this->smarty = new Smarty();
     }
 
-
     function showFormAgregarMedico($secretarias = null, $error = null){
         $this->smarty->assign('error',$error);
         $this->smarty->assign('secretarias',$secretarias);
@@ -22,10 +21,15 @@ class MedicoView{
 
     }
 
-    function showError($msgError = null)
-    {
+    function showError($msgError = null){
         $this->smarty->assign('error', $msgError);
         $this->smarty->display('../templates/error.tpl');
+    }
+
+    function renderModifyMedico($id, $medicos){
+        $this->smarty->assign('id', $id);
+        $this->smarty->assign('medicos', $medicos);
+        $this->smarty->display('../templates/medico/formModificarMedico.tpl');
     }
 
 }
