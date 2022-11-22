@@ -2,6 +2,7 @@
 require_once 'controllers/AuthController.php';
 require_once 'controllers/PacienteController.php';
 require_once 'controllers/MedicoController.php';
+require_once 'controllers/ResponsableController.php';
 
 // defino la base url para la construccion de links con urls semánticas
 
