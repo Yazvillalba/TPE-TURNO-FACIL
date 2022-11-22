@@ -78,6 +78,9 @@ switch ($params[0]) {
     case 'listarMedicos':  // al apretar BOTÓN LISTA MEDICOS muestra la tabla con los botones eliminar y modificar. FALTA ASOCIAR SECRETARIA
         $responsable->listarMedicos();
     break;
+    case 'borrarMedico': //cuando se apreta el boton eliminar se lo elimina de la BBDD
+        $responsable->deleteMedico($params[1]);
+    break;
     }  
     // lo que sigue a continuación agregado por Claudio para Secretaria:
   /*  case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla

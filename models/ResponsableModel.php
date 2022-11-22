@@ -19,6 +19,11 @@ class ResponsableModel{
         $query->execute([$nombre, $apellido, $matricula, $importe_consulta,$especialidad, $dia, $desde, $hasta, $id_secretaria]);
     }
 
+    function deleteMedico($id){
+        $query =  $this->db->prepare('DELETE FROM `medico` WHERE `medico`.`id` = ?');
+        $query->execute([$id]);
+    }
+
 
 
 }

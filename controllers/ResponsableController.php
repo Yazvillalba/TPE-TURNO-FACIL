@@ -64,4 +64,14 @@ class ResponsableController{
         $this->medicoView->showListaMedicos($medicos, $secretaria = null);
     }
 
+    function deleteMedico($id){
+        $medico = $this->pacienteModel->getMedicoById($id);
+        if ($medico) {
+            $this->responsableModel->deleteMedico($id);
+            header("Location: " .ADMINISTRACION);
+        } else {
+            $this->pacienteView->showError("La categoría no existe");
+        }
+    }
+
 }
