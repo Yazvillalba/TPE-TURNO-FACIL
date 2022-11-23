@@ -1,14 +1,21 @@
 <?php
 
 include_once('models/MedicoModel.php');
-
+include_once('views/MedicoView.php');
+include_once ('views/PacienteView.php');
+include_once('models/PacienteModel.php');
 class MedicoController{
 
     private $medicoModel;
-
+    private $medicoView;
+    private $pacienteModel;
+    private $pacienteView;
 
     public function __construct(){
         $this->medicoModel = new MedicoModel();
+        $this->medicoView = new MedicoView();
+        $this->pacienteModel = new PacienteModel();
+        $this->pacienteView = new PacienteView();
     }
 
     public function trabajaConObraSocial($id_medico, $id_obraSocial){
