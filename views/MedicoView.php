@@ -23,12 +23,12 @@ class MedicoView{
 
     function showError($msgError = null){
         $this->smarty->assign('error', $msgError);
-        $this->smarty->display('../templates/error.tpl');
+        $this->smarty->display('../templates/medico/errorMedico.tpl');
     }
 
-    function renderModifyMedico($id, $medicos){
+    function renderModifyMedico($id, $medico){
         $this->smarty->assign('id', $id);
-        $this->smarty->assign('medicos', $medicos);
+        $this->smarty->assign('medico', $medico);
         $this->smarty->display('../templates/medico/formModificarMedico.tpl');
     }
 

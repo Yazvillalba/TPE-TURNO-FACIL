@@ -1,41 +1,34 @@
 <?php
 
 require_once 'views/AuthView.php';
-<<<<<<< HEAD
 require_once 'views/SecretariaView.php';
-=======
-require_once 'models/ResponsableModel.php';
 require_once 'views/MedicoView.php';
+require_once 'views/PacienteView.php';
+require_once 'models/ResponsableModel.php';
 require_once 'models/PacienteModel.php';
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b
 
 class ResponsableController{
 
     private $authView;
-<<<<<<< HEAD
-    private $secretariaView;
-
-    public function __construct(){
-        $this->authView = new AuthView();
-        $this->secretariaView = new SecretariaView();
-=======
+    private $secretariaView;   
     private $medicoView;
+    private $pacienteView;
     private $responsableModel;
     private $pacienteModel;
 
     public function __construct(){
         $this->authView = new AuthView();
         $this->medicoView = new MedicoView();
+        $this->secretariaView = new SecretariaView();
+        $this->pacienteView = new PacienteView();
         $this->responsableModel = new ResponsableModel();
         $this->pacienteModel = new PacienteModel();
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b
     }
 
     public function showLoginResponsable(){
         $this-> authView->showFormLoginResponsable();  //LOGIN RESPONSABLE [1]
     }
 
-<<<<<<< HEAD
     // agregado por Claudio para Secretaria
     public function formAgregarSecretaria(){
         $this->secretariaView->showFormAgregarSecretaria();
@@ -61,7 +54,6 @@ class ResponsableController{
         $secretarias = $this->responsableModel->getAllSecretarias();
         $this->secretariaView->showListaSecretarias($secretarias);
     }
-=======
     public function agregarMedico(){  
         //$secretarias = $this->responsableModel->getAllSecretarias();
         $this->medicoView->showFormAgregarMedico($secretarias=null);
@@ -114,9 +106,11 @@ class ResponsableController{
     }
 
     function renderModificarMedico($id){
-        $medicos = $this->pacienteModel->getAllMedicos();
-        $this->medicoView->renderModifyMedico($id, $medicos);
+        $medico = $this->pacienteModel->getMedicoById($id);
+        var_dump($medico);
+        $this->medicoView->renderModifyMedico($id, $medico);
     }
+
     function modificarMedico(){
         if (
             !empty($_REQUEST['nombre']) && !empty($_REQUEST['apellido']) &&
@@ -127,7 +121,7 @@ class ResponsableController{
             isset($_REQUEST['matricula']) && isset($_REQUEST['importe_consulta'])&&
             isset($_REQUEST['especialidad']) && isset($_REQUEST['dia']) &&
             isset($_REQUEST['desde']) && isset($_REQUEST['hasta']) && isset($_REQUEST['id'])
-        ){                  
+        ){      
             $nombre = $_REQUEST['nombre'];
             $apellido = $_REQUEST['apellido'];
             $matricula = $_REQUEST['matricula'];
@@ -137,19 +131,17 @@ class ResponsableController{
             $desde = $_REQUEST['desde'];
             $hasta = $_REQUEST['hasta'];
             $id = $_REQUEST['id'];
-     
+
             $modify = $this->responsableModel->modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta,$id);
             
-
             if ($modify) {
-                header("Location: " . ADMINISTRACION);
+                header("Location: " . BASE_URL.'listarMedicos');
             } else {
-                $this->pacienteView->showError("No se pudo modificar");
+                $this->medicoView->showError("No se pudo modificar");
             }
         } else {
             $this->pacienteView->showError("Ingresos inválidos");
         } 
     } 
 
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b
 }

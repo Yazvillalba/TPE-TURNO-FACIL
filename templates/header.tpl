@@ -33,16 +33,16 @@
                             <div class="d-flex align-items-center" style="color: white;" >
                                 <span>{$smarty.session.USER_NAME}</span>
                                 <a class="nav-link " aria-current="page" href="logout" style="color: white;" > Logout</a>
-                            </div>
-                            
+                            </div>       
                         {else}
                                 <div class="d-flex align-items-center" >
-                                <a class="nav-link " aria-current="page" href="login" style="color: white;" >Ingresar</a>
-                                
+                                <a class="nav-link " aria-current="page" href="login" style="color: white;" >Ingresar</a>                               
                                 </div>
                         {/if}
+                        
                         {if isset($smarty.session.USER_EMAIL)}
                             <div class="d-flex align-items-center" style="color: white;" >
+                                <a class="nav-link " aria-current="page" href={ADMINISTRACION} style="color: white;" > Administración</a>
                                 <span>{$smarty.session.USER_EMAIL} </span>
                                 <a class="nav-link " aria-current="page" href="logout" style="color: white;"> Logout</a>
                             </div>

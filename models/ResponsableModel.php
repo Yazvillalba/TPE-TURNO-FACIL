@@ -7,7 +7,6 @@ class ResponsableModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_turnos_facil;charset=utf8', 'root', '');
     }
 
-<<<<<<< HEAD
     function insertSecretaria($nombre, $apellido){
         $query = $this->db->prepare('INSERT INTO secretaria(nombre,apellido) 
         VALUES (?,?)');
@@ -20,7 +19,6 @@ class ResponsableModel{
         $secretarias = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $secretarias;
     }
-=======
     function listarMedicos(){
         $query = $this->db->prepare('SELECT * from medico'); 
         $medicos = $query->fetchAll(PDO::FETCH_OBJ); 
@@ -38,21 +36,20 @@ class ResponsableModel{
         $query->execute([$id]);
     }
 
-    function modifyMedico($id, $nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta){
+    function modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta,$id){
         $query =  $this->db->prepare('UPDATE `medico` 
         SET `nombre` = ?, 
         `apellido` = ?,
-        `matricula` = ?
+        `matricula` = ?,
         `importe_consulta` = ?,
         `especialidad` = ?,
         `dia` = ?,
         `desde` = ?,
         `hasta` = ?
-        WHERE `medico`.`id` = ?'); 
-        return $query->execute([$id,$nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta]);
+        WHERE `id` = ? '); 
+        return $query->execute([$nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta, $id]);
     }
 
 
 
 }
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b

@@ -84,12 +84,11 @@ switch ($params[0]) {
     case 'renderModificarMedico': //cuando apreta el boton modificar se abre el formulario para modificar los datos del medico
         $responsable->renderModificarMedico($params[1]);
     break;
-    case 'confirmarMedico': //cuando se confirman los datos del formulario se hace el update en la BBDD
+    case 'modificarMedico': //cuando se confirman los datos del formulario se hace el update en la BBDD
         $responsable->modificarMedico();
-    break;
-    }  
-    // lo que sigue a continuación agregado por Claudio para Secretaria:
-  /*  case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
+    break; 
+                        // lo que sigue a continuación agregado por Claudio para Secretaria:
+    case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
         $responsable->formAgregarSecretaria();
     break;
     case 'ingresarSecretaria': //se verifican los datos ingresador en el formulario y agrega la secretaria a la BBDD
@@ -107,5 +106,5 @@ switch ($params[0]) {
     case 'confirmarSecretaria': //se apreta el boton confirmar datos y se hace el update en la table de BBDD
         $responsable->modificarSecretaria();
     break;
-}*/
+}
 

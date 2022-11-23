@@ -13,21 +13,21 @@
                         <form method="POST" action="ingresarMedico">
                                 <div class="form-group">
                                     <label for="nombre">Ingresar nombre</label>
-                                    <input type="text" name="nombre" required="required" class="form-control" maxlength="8" placeholder="Nombre"/>
+                                    <input type="text" name="nombre" required="required" class="form-control"  placeholder="Nombre"/>
                                     <label for="apellido">Ingresar apellido</label>
-                                    <input type="text" name="apellido" required="required" class="form-control" maxlength="8" placeholder="Apellido"/>
+                                    <input type="text" name="apellido" required="required" class="form-control"  placeholder="Apellido"/>
                                     <label for="matricula">Ingresar número de matrícula</label>
-                                    <input type="text" name="matricula" required="required" class="form-control" maxlength="8" placeholder="Matrícula"/>
+                                    <input type="text" name="matricula" required="required" class="form-control" placeholder="Matrícula"/>
                                     <label for="importe_consulta">Ingresar importe consulta</label>
                                     <input type="double" name="importe_consulta" required="required" class="form-control" maxlength="8" placeholder="Importe"/>
                                     <label for="especialidad">Ingresar especialidad</label>
-                                    <input type="text" name="especialidad" required="required" class="form-control" maxlength="8" placeholder="Especialidad"/>
+                                    <input type="text" name="especialidad" required="required" class="form-control"  placeholder="Especialidad"/>
                                     <label for="dia">Ingresar día de trabajo</label>
-                                    <input type="text" name="dia" required="required" class="form-control" maxlength="8" placeholder="Día"/>
+                                    <input type="text" name="dia" required="required" class="form-control" maxlength="9" placeholder="Día"/>
                                     <label for="desde">Ingresar horario de comienzo de atención</label>
-                                    <input type="time" name="desde" required="required" class="form-control" maxlength="8" placeholder="Desde"/>
+                                    <input type="time" name="desde" required="required" class="form-control" placeholder="Desde"/>
                                     <label for="hasta">Ingresar horario de fin de atención</label>
-                                    <input type="time" name="hasta" required="required" class="form-control" maxlength="8" placeholder="Hasta"/>
+                                    <input type="time" name="hasta" required="required" class="form-control"  placeholder="Hasta"/>
                                     
                                     <select class="form-select mt-2 mb-4" name="id_secretaria" aria-label="Default select example">
                                         <option value="0" >Elija la secretaria a asignar</option>
