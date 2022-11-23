@@ -3,9 +3,9 @@
     <div class="container ">
 
     <div>
-        <h3>Médicos que atienden por: {$tituloObraSocial}  </h3>
+        <h3 style="background-color: blueviolet; border-radius: 80px;width: 300; text-align: center;">Médicos que atienden por: {$tituloObraSocial}  </h3>
         
-        <table class="table">
+        <table class="table" style="background-color: white;">
             <thead>
                 <tr>
                     <th scope="col">Médico</th>
