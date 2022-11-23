@@ -3,7 +3,7 @@ require_once 'controllers/AuthController.php';
 require_once 'controllers/PacienteController.php';
 require_once 'controllers/MedicoController.php';
 require_once 'controllers/ResponsableController.php';
-
+require_once 'controllers/SecretariaController.php';
 // defino la base url para la construccion de links con urls semánticas
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -25,7 +25,7 @@ $authController = new AuthController();
 $pacienteController = new PacienteController();
 $medicoController = new MedicoController();
 $responsable = new ResponsableController();
-
+$secretariaController = new SecretariaController();
 switch ($params[0]) {
     case 'login':
         $authController->showLogin();  //viene por get
@@ -70,38 +70,38 @@ switch ($params[0]) {
         $authController->administracion();
     break;
     case 'agregarMedico': // muestra el formulario de alta de médico al APRETAR BOTÓn agregar médico;
-        $responsable->agregarMedico();
+        $medicoController->agregarMedico();
     break;
     case 'ingresarMedico': //al apretar botón INGRESAR del template de alta de médico, agrega los datos de un médico en la tabla medico de la BBDD
-        $responsable->insertMedico();
+        $medicoController->insertMedico();
     break;
     case 'listarMedicos':  // al apretar BOTÓN LISTA MEDICOS muestra la tabla con los botones eliminar y modificar. FALTA ASOCIAR SECRETARIA
-        $responsable->listarMedicos();
+        $medicoController->listarMedicos();
     break;
     case 'borrarMedico': //cuando se apreta el boton eliminar se lo elimina de la BBDD
-        $responsable->deleteMedico($params[1]);
+        $medicoController->deleteMedico($params[1]);
     break;
     case 'renderModificarMedico': //cuando apreta el boton modificar se abre el formulario para modificar los datos del medico
-        $responsable->renderModificarMedico($params[1]);
+        $medicoController->renderModificarMedico($params[1]);
     break;
     case 'confirmarMedico': //cuando se confirman los datos del formulario se hace el update en la BBDD
-        $responsable->modificarMedico();
+        $medicoController->modificarMedico();
     break;
     // lo que sigue a continuación agregado por Claudio para Secretaria:
     case 'formAgregarSecretaria': //cuando apreta boton agregar secretaria muestra el formulario para agregarla
-        $responsable->formAgregarSecretaria();
+        $secretariaController->formAgregarSecretaria();
     break;
     case 'ingresarSecretaria': //se verifican los datos ingresador en el formulario y agrega la secretaria a la BBDD
-        $responsable->insertSecretaria();
+        $secretariaController->insertSecretaria();
     break;
     case 'listaSecretarias': //se muestra la lista de secretarias con boton eliminar y modificar
-        $responsable->listarSecretarias();
+        $secretariaController->listarSecretarias();
     break;
-    case 'medicoAsociadoSecretaria':
-        $responsable->medicoAsociadoSecretaria($params[1]);
+    case 'medicoAsociadoSecretaria': //permite asignar un medico a las secretarias
+        $secretariaController->medicoAsociadoSecretaria($params[1]);
     break;
-    case 'confirmarMedicoAsociado': //se confirma la secretaria que se eligio en el select
-        $responsable->confirmarAsignacionMedico();
+    case 'confirmarMedicoAsociado': //se confirma el medico que se eligio en el select y a ese medico se le asigna la secretaria
+        $secretariaController->confirmarAsignacionMedico();
     break;
     /*   case 'borrarSecretaria': //cuando se apreta borrar se borra esa secretaria de la BBDD
         $responsable->deleteSecretaria($params[1]);
