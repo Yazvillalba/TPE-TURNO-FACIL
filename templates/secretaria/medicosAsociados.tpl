@@ -46,7 +46,21 @@
         <tbody>
             <tr>
                 <td style=" background-color: red;">No hay medicos asociados</td>
-                <td><a href="medicoAsociadoSecretaria/{$secretaria->id_secretaria}" class = "btn btn-outline-danger">Asociar Medico</a></td>             
+                    <td>
+                        <form method="POST" action="confirmarMedicoAsociado" class="d-flex">
+
+                            <select class="form-select me-2 " name="id_medico" aria-label="Default select example" style="min-width: fit-content;">
+                                <option value="0">Seleccionar</option>
+                                {foreach from=$medicosSelect item=$med}
+                                    
+                                    <option value="{$med->id}">{$med->nombre}, {$med->apellido}</option>
+                                {/foreach}
+                            </select>
+                        
+                            <input type="hidden" value="{$secretaria->id_secretaria}" name="id_secretaria"></input>
+                            <button type="submit" class="btn btn-secondary h-50" style="background-color: blueviolet;">Asignar</button>
+                        </form>
+                    </td>
             </tr>
         {/if}
         {/foreach}  

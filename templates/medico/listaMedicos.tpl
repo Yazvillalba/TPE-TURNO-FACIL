@@ -3,8 +3,8 @@
     <table class="table" style="background-color: white;" >
         <thead class="thead-light">
             <tr>
-                <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
+                <th scope="col">Nombre</th> 
                 <th scope="col">Matrícula</th>
                 <th scope="col">Importe</th>
                 <th scope="col">Especialidad</th>
@@ -19,8 +19,8 @@
         <tbody>
             {foreach from=$medicos item=$medico }
                 <tr>
-                    <td>{$medico->nombre}</td>
                     <td>{$medico->apellido}</td>
+                    <td>{$medico->nombre}</td>
                     <td>{$medico->matricula}</td>
                     <td>{$medico->importe_consulta}</td>
                     <td>{$medico->especialidad}</td>

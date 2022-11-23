@@ -19,4 +19,11 @@ class SecretariaView{
         $this->smarty->display('../templates/secretaria/listaSecretarias.tpl');
 
     }
+    function showMedicosAsociados($secretarias, $medicos, $medicosSelect, $error= null){
+        $this->smarty->assign('medicos', $medicos);
+        $this->smarty->assign('secretarias', $secretarias);
+        $this->smarty->assign('medicosSelect', $medicosSelect);
+        $this->smarty->assign('error',$error);
+        $this->smarty->display('../templates/secretaria/medicosAsociados.tpl');
+    }
 }

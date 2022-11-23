@@ -58,6 +58,7 @@ class PacienteModel{
         $turnosMedico = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $turnosMedico;
     }
+
     function getTurnoById($id){
         $query = $this->db->prepare('SELECT m.*, t.*
                                     FROM medico m JOIN turno t 
@@ -67,6 +68,7 @@ class PacienteModel{
         $turno = $query->fetch(PDO::FETCH_OBJ); 
         return  $turno;
     }
+
     function getPacienteById($id){
         $query = $this->db->prepare('SELECT *  FROM paciente 
                                         WHERE id =?');
@@ -83,7 +85,7 @@ class PacienteModel{
         $nombreObraSocial = $query->fetch(PDO::FETCH_OBJ);
         return  $nombreObraSocial;
     }
- 
+
     function searchMedicos($textToSearch){
         $query = $this->db->prepare('SELECT * FROM MEDICO
                                     WHERE apellido  LIKE ? OR nombre LIKE ? ');
