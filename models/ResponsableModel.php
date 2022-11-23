@@ -7,7 +7,6 @@ class ResponsableModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_turnos_facil;charset=utf8', 'root', '');
     }
 
-<<<<<<< HEAD
     function insertSecretaria($nombre, $apellido){
         $query = $this->db->prepare('INSERT INTO secretaria(nombre,apellido) 
         VALUES (?,?)');
@@ -20,9 +19,9 @@ class ResponsableModel{
         $secretarias = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $secretarias;
     }
-=======
     function listarMedicos(){
         $query = $this->db->prepare('SELECT * from medico'); 
+        $query->execute();
         $medicos = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $medicos;
     }
@@ -51,8 +50,24 @@ class ResponsableModel{
         WHERE `medico`.`id` = ?'); 
         return $query->execute([$id,$nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta]);
     }
+    function getSecretarias($id_secretaria = null){
+        if (isset($id_secretaria)) {
+            $query = $this->db->prepare('SELECT * FROM secretaria WHERE id_secretaria = ?');
+            $query->execute([$id_secretaria]);
+            $secretarias = $query->fetchAll(PDO::FETCH_OBJ);
+        }
+        else{
+            $query = $this->db->prepare('SELECT * FROM secretaria');
+            $query->execute();
+            $secretarias = $query->fetchAll(PDO::FETCH_OBJ);
+        }
+        
+        return $secretarias;
+    }
+    function asignSecretaria($id_secretaria,$id_medico){
+        $query = $this->db->prepare('UPDATE medico SET id_secretaria= ? WHERE id = ?');
 
-
+        $query->execute([$id_secretaria,$id_medico]);
+    }
 
 }
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b

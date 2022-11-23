@@ -1,41 +1,32 @@
 <?php
 
 require_once 'views/AuthView.php';
-<<<<<<< HEAD
 require_once 'views/SecretariaView.php';
-=======
 require_once 'models/ResponsableModel.php';
 require_once 'views/MedicoView.php';
 require_once 'models/PacienteModel.php';
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b
-
+require_once 'models/MedicoModel.php';
 class ResponsableController{
 
     private $authView;
-<<<<<<< HEAD
     private $secretariaView;
-
-    public function __construct(){
-        $this->authView = new AuthView();
-        $this->secretariaView = new SecretariaView();
-=======
     private $medicoView;
     private $responsableModel;
     private $pacienteModel;
-
+    private $medicoModel;
     public function __construct(){
         $this->authView = new AuthView();
         $this->medicoView = new MedicoView();
         $this->responsableModel = new ResponsableModel();
         $this->pacienteModel = new PacienteModel();
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b
+        $this->secretariaView = new SecretariaView();
+        $this->medicoModel = new medicoModel();
     }
 
     public function showLoginResponsable(){
         $this-> authView->showFormLoginResponsable();  //LOGIN RESPONSABLE [1]
     }
 
-<<<<<<< HEAD
     // agregado por Claudio para Secretaria
     public function formAgregarSecretaria(){
         $this->secretariaView->showFormAgregarSecretaria();
@@ -61,7 +52,6 @@ class ResponsableController{
         $secretarias = $this->responsableModel->getAllSecretarias();
         $this->secretariaView->showListaSecretarias($secretarias);
     }
-=======
     public function agregarMedico(){  
         //$secretarias = $this->responsableModel->getAllSecretarias();
         $this->medicoView->showFormAgregarMedico($secretarias=null);
@@ -150,6 +140,20 @@ class ResponsableController{
             $this->pacienteView->showError("Ingresos inválidos");
         } 
     } 
+    function medicoAsociadoSecretaria($id_secretaria){
+        
+        $secretaria = $this->responsableModel->getSecretarias($id_secretaria);
+        $medicos = $this->medicoModel->getMedicoAsociado($id_secretaria);
+        $medicosSelect = $this->responsableModel->listarMedicos();
+        $this->secretariaView->showMedicosAsociados($secretaria, $medicos, $medicosSelect);
+    }
+    function confirmarAsignacionMedico(){
+        if(isset($_POST['id_medico']) && isset($_POST['id_secretaria'])){
+            $id_secretaria = $_POST['id_secretaria'];
+            $id_medico = $_POST['id_medico'];
+            $this->responsableModel->asignSecretaria($id_secretaria,$id_medico);
 
->>>>>>> 4ce39a8cc6201cd6fe7405348584e029a5c2601b
+        }
+        header("Location: " .BASE_URL.'/listaSecretarias'); 
+    }
 }
