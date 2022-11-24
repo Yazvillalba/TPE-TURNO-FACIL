@@ -15,7 +15,7 @@ class medicoModel{
     }
 
     function getObraSocialXId($id){
-        $query = $this->db->prepare('SELECT * FROM obra_social WHERE id = ');
+        $query = $this->db->prepare('SELECT * FROM obra_social WHERE id = ?');
         $query->execute([$id]);
         $obraSocial = $query->fetch(PDO::FETCH_OBJ); 
         return  $obraSocial;
@@ -57,23 +57,25 @@ class medicoModel{
         $query->execute([$nombre, $apellido, $matricula, $importe_consulta,$especialidad, $dia, $desde, $hasta, $id_secretaria]);
     } 
 
+    //la funcion elimina un medico seleccionado de la tabla medico de la base de datos  
     function deleteMedico($id){
         $query =  $this->db->prepare('DELETE FROM `medico` WHERE `medico`.`id` = ?');
         $query->execute([$id]);
     }
 
-    function modifyMedico($id, $nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta){
+    //la funcion modifica el medico de la tabla medico de la base de datos por el id
+    function modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta, $id){
         $query =  $this->db->prepare('UPDATE `medico` 
         SET `nombre` = ?, 
         `apellido` = ?,
-        `matricula` = ?
+        `matricula` = ?,
         `importe_consulta` = ?,
         `especialidad` = ?,
         `dia` = ?,
         `desde` = ?,
         `hasta` = ?
-        WHERE `medico`.`id` = ?'); 
-        return $query->execute([$id,$nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta]);
+        WHERE `medico`.`id` = ?');
+        return $query->execute([$nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta, $id]);
     }
 
 

@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<form action="modificarMedico" class="form-group" method="POST" enctype="multipart/form-data">
+<form action="confirmarMedico" class="form-group" method="POST" enctype="multipart/form-data">
     <div class="d-flex justify-content-center">
 
         <div class="border border-radius w-50 p-2 px-5 ">
@@ -17,10 +17,12 @@
 
                     <input type="hidden" value="{$id}" class="form-control " name="id">
                     <button type="submit" class="btn btn-outline-success col-auto m-2">Confirmar</button>
-                    <a href="listaMedicos" class="btn btn-danger  col-auto m-2">Cancelar</a>
+                    <a href="listarMedicos" class="btn btn-danger  col-auto m-2">Cancelar</a>
                 </div>
             </div>
         </div>
     </div>
 </form>
 {include file="footer.tpl"}
+
+
