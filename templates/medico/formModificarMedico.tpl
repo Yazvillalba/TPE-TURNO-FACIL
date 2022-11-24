@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<form action="confirmarMedico" class="form-group" method="POST" enctype="multipart/form-data">
+<form action="modificarMedico" class="form-group" method="POST" enctype="multipart/form-data">
     <div class="d-flex justify-content-center">
 
         <div class="border border-radius w-50 p-2 px-5 ">
@@ -24,5 +24,3 @@
     </div>
 </form>
 {include file="footer.tpl"}
-
-
