@@ -36,4 +36,21 @@ class SecretariaModel{
 
         $query->execute([$id_secretaria,$id_medico]);
     }
+    function getSecretariaById($id){
+        $query = $this->db->prepare('SELECT * FROM secretaria WHERE id_secretaria = ?');
+        $query->execute([$id]);
+        $secretaria = $query->fetch(PDO::FETCH_OBJ); 
+        return  $secretaria;
+    }
+    function deleteSecretaria($id){
+        $query =  $this->db->prepare('DELETE FROM `secretaria` WHERE `secretaria`.`id_secretaria` = ?');
+        $query->execute([$id]);
+    }
+    function modifySecretaria($id, $nombre, $apellido){
+        $query =  $this->db->prepare('UPDATE `secretaria` 
+        SET `nombre` = ?, 
+       `apellido` = ?
+        WHERE `secretaria`.`id_secretaria` = ?'); 
+        return $query->execute([$id,$nombre, $apellido]);
+    }
 }

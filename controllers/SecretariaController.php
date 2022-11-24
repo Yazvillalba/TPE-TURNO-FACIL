@@ -53,4 +53,44 @@ class SecretariaController{
         }
         header("Location: " .BASE_URL.'/listaSecretarias'); 
     }
+    function deleteSecretaria($id){
+
+        $secretaria = $this->secretariaModel->getSecretariaById($id);
+
+        if ($secretaria) {
+
+            $this->secretariaModel->deleteSecretaria($id);
+
+            header("Location: " .ADMINISTRACION);
+        } else {
+
+            $this->pacienteView->showError("La categoría no existe");
+        }
+    }
+    function renderModificarSecretaria($id){
+        $secretarias = $this->secretariaModel->getAllSecretarias();
+        $this->secretariaView->renderModifySecretaria($id, $secretarias);
+    }
+    function modificarSecretaria(){
+        if (
+            !empty($_REQUEST['nombre']) && !empty($_REQUEST['apellido']) && !empty($_REQUEST['id']) &&
+            isset($_REQUEST['nombre']) && isset($_REQUEST['apellido']) && isset($_REQUEST['id'])
+        ){                  
+            $nombre = $_REQUEST['nombre'];
+            $apellido = $_REQUEST['apellido'];
+            $id = $_REQUEST['id'];
+     
+            $modify = $this->secretariaModel->modifySecretaria($nombre, $apellido , $id);
+            
+
+            if ($modify) {
+                header("Location: " . ADMINISTRACION);
+            } else {
+                $this->pacienteView->showError("No se pudo modificar");
+            }
+        } else {
+            $this->pacienteView->showError("Ingresos inválidos");
+        } 
+    }
+
 }

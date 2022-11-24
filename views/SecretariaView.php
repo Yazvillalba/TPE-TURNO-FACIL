@@ -19,6 +19,11 @@ class SecretariaView{
         $this->smarty->display('../templates/secretaria/listaSecretarias.tpl');
 
     }
+    function renderModifySecretaria($id, $secretaria){
+        $this->smarty->assign('id', $id);
+        $this->smarty->assign('secretaria', $secretaria);
+        $this->smarty->display('../templates/secretaria/formModificarSecretaria.tpl');
+    }
     function showMedicosAsociados($secretarias, $medicos, $medicosSelect, $error= null){
         $this->smarty->assign('medicos', $medicos);
         $this->smarty->assign('secretarias', $secretarias);
