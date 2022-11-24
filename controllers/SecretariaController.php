@@ -36,13 +36,15 @@ class SecretariaController{
         $secretarias = $this->secretariaModel->getAllSecretarias();
         $this->secretariaView->showListaSecretarias($secretarias);
     }
+    
     function medicoAsociadoSecretaria($id_secretaria){
         
-       $secretaria = $this->secretariaModel->getSecretarias($id_secretaria);
-       $medicos = $this->medicoModel->getMedicoAsociado($id_secretaria);
-       $medicosSelect = $this->medicoModel->listarMedicos();
-       $this->secretariaView->showMedicosAsociados($secretaria, $medicos, $medicosSelect);
+        $secretaria = $this->secretariaModel->getSecretarias($id_secretaria);
+        $medicos = $this->medicoModel->getMedicoAsociado($id_secretaria);
+        $medicosSelect = $this->medicoModel->listarMedicos();
+        $this->secretariaView->showMedicosAsociados($secretaria, $medicos, $medicosSelect);
     }
+
     function confirmarAsignacionMedico(){
         if(isset($_POST['id_medico']) && isset($_POST['id_secretaria'])){
             $id_secretaria = $_POST['id_secretaria'];
@@ -52,6 +54,7 @@ class SecretariaController{
         }
         header("Location: " .BASE_URL.'/listaSecretarias'); 
     }
+
     function deleteSecretaria($id){
 
         $secretaria = $this->secretariaModel->getSecretariaById($id);
@@ -66,10 +69,12 @@ class SecretariaController{
             $this->pacienteView->showError("La categoría no existe");
         }
     }
+
     function renderModificarSecretaria($id){
         $secretarias = $this->secretariaModel->getAllSecretarias();
         $this->secretariaView->renderModifySecretaria($id, $secretarias);
     }
+
     function modificarSecretaria(){
         if (
             !empty($_REQUEST['nombre']) && !empty($_REQUEST['apellido']) && !empty($_REQUEST['id']) &&
@@ -78,7 +83,7 @@ class SecretariaController{
             $nombre = $_REQUEST['nombre'];
             $apellido = $_REQUEST['apellido'];
             $id = $_REQUEST['id'];
-     
+
             $modify = $this->secretariaModel->modifySecretaria($nombre, $apellido , $id);
             
 

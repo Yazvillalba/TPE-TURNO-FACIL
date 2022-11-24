@@ -72,6 +72,7 @@ class MedicoController{
             $this->pacienteView->showError("Ingresos inválidos");
         }
     }
+
     function listarMedicos(){
         $medicos = $this->pacienteModel->getAllMedicos();
         //$secretarias = $this->responsableModel->getAllSecretarias();
@@ -116,7 +117,6 @@ class MedicoController{
 
             $modify = $this->medicoModel->modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta, $id);
             
-
             if ($modify) {
                 header("Location: " . BASE_URL.'listarMedicos');
             } else {
