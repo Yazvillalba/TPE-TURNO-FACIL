@@ -4,18 +4,22 @@ include_once('models/MedicoModel.php');
 include_once('views/MedicoView.php');
 include_once ('views/PacienteView.php');
 include_once('models/PacienteModel.php');
+include_once('models/ResponsableModel.php');
+
 class MedicoController{
 
     private $medicoModel;
     private $medicoView;
     private $pacienteModel;
     private $pacienteView;
+    private $responsableModel;
 
     public function __construct(){
         $this->medicoModel = new MedicoModel();
         $this->medicoView = new MedicoView();
         $this->pacienteModel = new PacienteModel();
         $this->pacienteView = new PacienteView();
+        $this->responsableModel = new ResponsableModel();
     }
 
     public function trabajaConObraSocial($id_medico, $id_obraSocial){
@@ -71,8 +75,8 @@ class MedicoController{
     }
     function listarMedicos(){
         $medicos = $this->pacienteModel->getAllMedicos();
-        //$secretaria = $this->responsableModel->getAllSecretarias();
-        $this->medicoView->showListaMedicos($medicos, $secretaria = null);
+        $secretarias = $this->responsableModel->getAllSecretarias();
+        $this->medicoView->showListaMedicos($medicos, $secretarias);
     }
 
     function deleteMedico($id){
@@ -109,7 +113,7 @@ class MedicoController{
             $desde = $_REQUEST['desde'];
             $hasta = $_REQUEST['hasta'];
             $id = $_REQUEST['id'];
-     
+
             $modify = $this->medicoModel->modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta,$id);
             
 
