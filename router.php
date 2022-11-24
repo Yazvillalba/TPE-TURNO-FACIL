@@ -11,12 +11,11 @@ define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . d
 define('SELECCIONAR', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/seleccionar');
 define('ADMINISTRACION', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/administracion');
 
-
 if (!empty($_GET['action'])){
     $action = $_GET['action'];
 }
 else {
-    $action = 'login';
+    $action = 'seleccionar';
 }
 
 $params = explode('/', $action);
@@ -32,6 +31,7 @@ switch ($params[0]) {
     break;
     case 'verify':
         $authController->login();  
+    break;
     case'logout':
         $authController->logout();
     break;
@@ -86,6 +86,9 @@ switch ($params[0]) {
     case 'modificarMedico': //cuando se confirman los datos del formulario se hace el update en la BBDD
         $medicoController->modificarMedico();
     break;
+    case 'confirmarMedico': //cuando se confirman los datos del formulario se hace el update en la BBDD
+        $medicoController->modificarMedico();
+    break;
     // lo que sigue a continuación agregado por Claudio para Secretaria:
     case 'formAgregarSecretaria':     //cuando apreta boton agregar secretaria muestra el formulario para agregarla
         $responsable->formAgregarSecretaria();
@@ -102,14 +105,14 @@ switch ($params[0]) {
     case 'confirmarMedicoAsociado': //se confirma el medico que se eligio en el select y a ese medico se le asigna la secretaria
         $secretariaController->confirmarAsignacionMedico();
     break;
-     case 'borrarSecretaria': //cuando se apreta borrar se borra esa secretaria de la BBDD
-        $responsable->deleteSecretaria($params[1]);
+    case 'borrarSecretaria': //cuando se apreta borrar se borra esa secretaria de la BBDD
+        $secretariaController->deleteSecretaria($params[1]);
     break;
     case 'renderModificarSecretaria': //cuando se apreta modificar se abre el formulario para modificar los datos de la secretaria
-        $responsable->renderModificarSecretaria($params[1]);
+        $secretariaController->renderModificarSecretaria($params[1]);
     break;
     case 'confirmarSecretaria': //se apreta el boton confirmar datos y se hace el update en la table de BBDD
-        $responsable->modificarSecretaria();
+        $secretariaController->modificarSecretaria();
     break;
 }
 
