@@ -75,18 +75,20 @@ class MedicoController{
     }
 
     function deleteMedico($id){
-        $medico = $this->pacienteModel->getMedicoById($id);
+        $medico = $this->medicoModel->getMedicoXId($id);
         if ($medico) {
             $this->medicoModel->deleteMedico($id);
-            header("Location: " .ADMINISTRACION);
+            header("Location: " . BASE_URL.'listarMedicos');
         } else {
-            $this->pacienteView->showError("La categoría no existe");
+            $this->medicoView->showError("El médico no existe");
         }
     }
+
     function renderModificarMedico($id){
-        $medicos = $this->pacienteModel->getAllMedicos();
-        $this->medicoView->renderModifyMedico($id, $medicos);
+        $medico = $this->medicoModel->getMedicoXId($id);
+        $this->medicoView->renderModifyMedico($id, $medico);
     }
+
     function modificarMedico(){
         if (
             !empty($_REQUEST['nombre']) && !empty($_REQUEST['apellido']) &&
@@ -108,18 +110,19 @@ class MedicoController{
             $hasta = $_REQUEST['hasta'];
             $id = $_REQUEST['id'];
      
-            $modify = $this->medicoModel->modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta,$id);
+            $modify = $this->medicoModel->modifyMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta, $id);
             
 
             if ($modify) {
-                header("Location: " . ADMINISTRACION);
+                header("Location: " . BASE_URL.'listarMedicos');
             } else {
-                $this->pacienteView->showError("No se pudo modificar");
+                $this->medicoView->showError("No se pudo modificar");
             }
         } else {
-            $this->pacienteView->showError("Ingresos inválidos");
+            $this->medicoView->showError("Ingresos inválidos");
         } 
     } 
+    
 }
 
 // mensaje de alert
