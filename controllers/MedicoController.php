@@ -4,7 +4,7 @@ include_once('models/MedicoModel.php');
 include_once('views/MedicoView.php');
 include_once ('views/PacienteView.php');
 include_once('models/PacienteModel.php');
-include_once('models/ResponsableModel.php');
+
 
 class MedicoController{
 
@@ -88,8 +88,8 @@ class MedicoController{
         }
     }
     function renderModificarMedico($id){
-        $medicos = $this->pacienteModel->getAllMedicos();
-        $this->medicoView->renderModifyMedico($id, $medicos);
+        $medico = $this->medicoModel->getMedicoXId($id);
+        $this->medicoView->renderModifyMedico($id, $medico);
     }
     function modificarMedico(){
         if (

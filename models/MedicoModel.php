@@ -22,7 +22,7 @@ class medicoModel{
     }
 
     function getMedicoXId($id){
-        $query = $this->db->prepare('SELECT * FROM medico WHERE id = ');
+        $query = $this->db->prepare('SELECT * FROM medico WHERE id = ?');
         $query->execute([$id]);
         $medico = $query->fetch(PDO::FETCH_OBJ); 
         return  $medico;
