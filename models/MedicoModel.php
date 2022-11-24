@@ -44,7 +44,7 @@ class medicoModel{
 
     //función para listar los médicos de la tabla MEDICO de la BBDD ordenados alfeticamente por apellido ASCendente.
     function listarMedicos(){
-        $query = $this->db->prepare('SELECT * from medico order by apellido ASC'); 
+        $query = $this->db->prepare('SELECT * from medico'); 
         $query->execute();
         $medicos = $query->fetchAll(PDO::FETCH_OBJ); 
         return  $medicos;
@@ -55,7 +55,7 @@ class medicoModel{
         $query = $this->db->prepare('INSERT INTO medico(nombre,apellido, matricula, importe_consulta,especialidad,dia, desde,hasta,id_secretaria) 
         VALUES (?,?,?,?,?,?,?,?,?)');
         $query->execute([$nombre, $apellido, $matricula, $importe_consulta,$especialidad, $dia, $desde, $hasta, $id_secretaria]);
-    }
+    } 
 
     function deleteMedico($id){
         $query =  $this->db->prepare('DELETE FROM `medico` WHERE `medico`.`id` = ?');

@@ -31,7 +31,8 @@ class SecretariaModel{
         
         return $secretarias;
     }
-    function asignSecretaria($id_secretaria,$id_medico){
+    function asignSecretaria($id_secretaria,$id_medico) 
+    {
         $query = $this->db->prepare('UPDATE medico SET id_secretaria= ? WHERE id = ?');
 
         $query->execute([$id_secretaria,$id_medico]);

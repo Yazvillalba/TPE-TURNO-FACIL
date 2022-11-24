@@ -85,7 +85,7 @@ class PacienteModel{
         $nombreObraSocial = $query->fetch(PDO::FETCH_OBJ);
         return  $nombreObraSocial;
     }
-
+ 
     function searchMedicos($textToSearch){
         $query = $this->db->prepare('SELECT * FROM MEDICO
                                     WHERE apellido  LIKE ? OR nombre LIKE ? ');

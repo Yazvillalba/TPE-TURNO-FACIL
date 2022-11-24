@@ -11,12 +11,11 @@ define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . d
 define('SELECCIONAR', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/seleccionar');
 define('ADMINISTRACION', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/administracion');
 
-
 if (!empty($_GET['action'])){
     $action = $_GET['action'];
 }
 else {
-    $action = 'login';
+    $action = 'seleccionar';
 }
 
 $params = explode('/', $action);
@@ -32,6 +31,7 @@ switch ($params[0]) {
     break;
     case 'verify':
         $authController->login();  
+    break;
     case'logout':
         $authController->logout();
     break;

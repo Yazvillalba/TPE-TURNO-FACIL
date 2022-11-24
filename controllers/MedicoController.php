@@ -19,7 +19,6 @@ class MedicoController{
     }
 
     public function trabajaConObraSocial($id_medico, $id_obraSocial){
-        
                 $os_medico = $this->medicoModel->getAllObraSocialXIdMedico($id_medico);
                 // tengo todos los id_medicos asociados a id_obraSocial
                 if (!empty($os_medico)){ 
@@ -49,7 +48,7 @@ class MedicoController{
             isset($_REQUEST['matricula']) && isset($_REQUEST['importe_consulta'])&&
             isset($_REQUEST['especialidad']) && isset($_REQUEST['dia']) &&
             isset($_REQUEST['desde']) && isset($_REQUEST['hasta'])){
-        
+              
             $nombre = $_REQUEST['nombre'];
             $apellido = $_REQUEST['apellido'];
             $matricula = $_REQUEST['matricula'];
@@ -66,12 +65,12 @@ class MedicoController{
             $this->medicoModel->insertMedico($nombre, $apellido, $matricula, $importe_consulta, $especialidad, $dia, $desde, $hasta, $id_secretaria);
             header("Location: " .ADMINISTRACION);
         } else {
-            $this->medicoView->showError("Ingresos inválidos");
+            $this->pacienteView->showError("Ingresos inválidos");
         }
     }
     function listarMedicos(){
         $medicos = $this->pacienteModel->getAllMedicos();
-        //$secretaria = $this->responsableModel->getAllSecretarias();
+     //   $secretaria = $this->secretariaModel->getAllSecretarias();
         $this->medicoView->showListaMedicos($medicos, $secretaria = null);
     }
 
@@ -84,7 +83,6 @@ class MedicoController{
             $this->pacienteView->showError("La categoría no existe");
         }
     }
-
     function renderModificarMedico($id){
         $medicos = $this->pacienteModel->getAllMedicos();
         $this->medicoView->renderModifyMedico($id, $medicos);

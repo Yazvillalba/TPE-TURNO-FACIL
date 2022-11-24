@@ -2,19 +2,18 @@
 require_once 'models/SecretariaModel.php';
 require_once 'views/SecretariaView.php';
 require_once 'views/PacienteView.php';
+require_once 'models/MedicoModel.php';
 class SecretariaController{
 
+    private $pacienteView;
     private $secretariaView;
     private $secretariaModel;
-    private $pacienteView;
+    private $medicoModel;
     public function __construct(){
-        $this->secretariaView = new SecretariaView();
-        $this->secretariaModel = new SecretariaModel();
         $this->pacienteView = new PacienteView();
-    }
-    // agregado por Claudio para Secretaria
-    public function formAgregarSecretaria(){
-        $this->secretariaView->showFormAgregarSecretaria();
+        $this->secretariaView = new SecretariaView();
+        $this->secretariaModel = new secretariaModel();
+        $this->medicoModel = new medicoModel();
     }
 
     function insertSecretaria(){
@@ -39,10 +38,10 @@ class SecretariaController{
     }
     function medicoAsociadoSecretaria($id_secretaria){
         
-        $secretaria = $this->secretariaModel->getSecretarias($id_secretaria);
-        $medicos = $this->medicoModel->getMedicoAsociado($id_secretaria);
-        $medicosSelect = $this->medicoModel->listarMedicos();
-        $this->secretariaView->showMedicosAsociados($secretaria, $medicos, $medicosSelect);
+       $secretaria = $this->secretariaModel->getSecretarias($id_secretaria);
+       $medicos = $this->medicoModel->getMedicoAsociado($id_secretaria);
+       $medicosSelect = $this->medicoModel->listarMedicos();
+       $this->secretariaView->showMedicosAsociados($secretaria, $medicos, $medicosSelect);
     }
     function confirmarAsignacionMedico(){
         if(isset($_POST['id_medico']) && isset($_POST['id_secretaria'])){
