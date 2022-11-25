@@ -6,7 +6,7 @@ require_once 'controllers/ResponsableController.php';
 require_once 'controllers/SecretariaController.php';
 // defino la base url para la construccion de links con urls semánticas
 
-define('x', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
 define('SELECCIONAR', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/seleccionar');
 define('ADMINISTRACION', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) .'/administracion');
@@ -114,6 +114,12 @@ switch ($params[0]) {
     case 'confirmarSecretaria': //se apreta el boton confirmar datos y se hace el update en la table de BBDD
         $secretariaController->modificarSecretaria();
     break;
+    case'asignarSecretaria': //se muestra el select para poder elegir que secretaria asignar cuando se agrega el medico
+        $responsable->asignarSecretarias();
+    break;
+    case 'confirmarAsignacionSecretaria': //se confirma la secretaria que se eligio en el select
+        $responsable->confirmarAsignacionSecretaria();
+       break;
 }
 
 

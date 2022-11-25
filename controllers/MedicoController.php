@@ -4,6 +4,7 @@ include_once('models/MedicoModel.php');
 include_once('views/MedicoView.php');
 include_once ('views/PacienteView.php');
 include_once('models/PacienteModel.php');
+include_once('models/SecretariaModel.php');
 
 
 class MedicoController{
@@ -12,6 +13,7 @@ class MedicoController{
     private $medicoView;
     private $pacienteModel;
     private $pacienteView;
+    private $secretariaModel;
 
 
     public function __construct(){
@@ -19,6 +21,7 @@ class MedicoController{
         $this->medicoView = new MedicoView();
         $this->pacienteModel = new PacienteModel();
         $this->pacienteView = new PacienteView();
+        $this->secretariaModel = new SecretariaModel();
 
     }
 
@@ -39,8 +42,8 @@ class MedicoController{
     }
     //FUNCIONES USADAS EN EL LOGIN DE RESPONSABLE DE LA INSTITUCION 
     public function agregarMedico(){  
-        //$secretarias = $this->responsableModel->getAllSecretarias();
-        $this->medicoView->showFormAgregarMedico($secretarias=null);
+        $secretarias = $this->secretariaModel->getAllSecretarias();
+        $this->medicoView->showFormAgregarMedico($secretarias);
     }
 
     function insertMedico(){

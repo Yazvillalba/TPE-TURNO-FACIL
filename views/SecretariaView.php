@@ -31,4 +31,8 @@ class SecretariaView{
         $this->smarty->assign('error',$error);
         $this->smarty->display('../templates/secretaria/medicosAsociados.tpl');
     }
+    function asignarSecretarias($secretarias){
+        $this->smarty->assign('secretarias', $secretarias);
+        $this->smarty->display('../templates/asignarSecretaria.tpl');
+    }
 }
