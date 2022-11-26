@@ -78,8 +78,8 @@ class MedicoController{
 
     function listarMedicos(){
         $medicos = $this->pacienteModel->getAllMedicos();
-        //$secretarias = $this->responsableModel->getAllSecretarias();
-        $this->medicoView->showListaMedicos($medicos, $secretaria = null);
+        $secretarias = $this->secretariaModel->getAllSecretarias();
+        $this->medicoView->showListaMedicos($medicos, $secretarias);
     }
 
     function deleteMedico($id){

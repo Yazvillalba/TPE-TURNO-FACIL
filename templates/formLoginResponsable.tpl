@@ -1,6 +1,7 @@
 {include file="templates/header.tpl"}
 
 <div class="mt-5 w-25 mx-auto">
+    <h4 class="p-3">Administrador</h4>
     <h4 class="p-3">Ingresá tu usuario y contraseña</h4> 
     <form action="verifyResponsable" method="post" >
             <div class="form-group">

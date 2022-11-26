@@ -37,6 +37,25 @@
                         {/if}
                     {/foreach}
 
+                    {if ($medico->id_secretaria == 0)}
+                        <td>
+                           
+                            <form method="POST" action="confirmarAsignacionSecretaria" class="d-flex">
+
+                                <select class="form-select me-2 " name="id_secretaria" aria-label="Default select example" style="min-width: fit-content;">
+                                    <option value="0">Seleccionar</option>
+                                    {foreach from=$secretarias item=$secretaria}
+                                        <option value="{$secretaria->id_secretaria}">{$secretaria->nombre}, {$secretaria->apellido}</option>
+                                    {/foreach}
+                                </select>
+                            
+                                <input type="hidden" value="{$medico->id}" name="id_medico"></input>
+                                <button type="submit" class="btn btn-secondary h-50" style="background-color: blueviolet;">Asignar</button>
+                            </form>
+                        </td>
+                    {/if}
+                    
+
                 </tr>
             {/foreach}
         </tbody>

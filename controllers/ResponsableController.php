@@ -33,6 +33,6 @@ class ResponsableController{
             $this->secretariaModel->asignSecretaria($id_secretaria,$id_medico);
 
         }
-        header("Location: " .BASE_URL.'/listaMedicos'); 
+        header("Location: " .BASE_URL.'listarMedicos'); 
     }
 }
