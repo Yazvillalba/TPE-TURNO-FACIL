@@ -40,7 +40,7 @@
                        
                         {else if isset($smarty.session.USER_EMAIL)}
                             <div class="d-flex align-items-center" style="color: white;" >
-                                <a class="nav-link " aria-current="page" href={ADMINISTRACION} style="color: white;" > Administración</a>
+                                <a class="nav-link " aria-current="page" href="{ADMINISTRACION}" style="color: white;" > Administración</a>
                                 <span>{$smarty.session.USER_EMAIL} </span>
                                 <a class="nav-link " aria-current="page" href="logout" style="color: white;"> Logout</a>
                             </div>
