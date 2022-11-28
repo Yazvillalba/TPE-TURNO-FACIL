@@ -21,26 +21,24 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarText" >
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex w-100">
-                        
+                       
                         <li class="nav-item" >
-                            <a class="nav-link active" aria-current="page" href="login" style="color: white;" >Home</a>
+                            <a class="nav-link active" aria-current="page" href="" style="color: white;" >Home</a>
                         </li>
                        <li class="nav-item ms-auto">
+                       
                        <div class="d-flex align-items-center">
-                        {if isset($smarty.session.USER_NAME)} 
+                        {if isset($smarty.session.USER_NAME)}
                             <div class="d-flex align-items-center" style="color: white;" >
+                                <a class="nav-link " aria-current="page" href={SELECCIONAR} style="color: white;" > Sacar turno</a>
                                 <span>{$smarty.session.USER_NAME}</span>
                                 <a class="nav-link " aria-current="page" href="logout" style="color: white;" > Logout</a>
-                            </div>       
-                        {else}
-                                <div class="d-flex align-items-center" >
-                                <a class="nav-link " aria-current="page" href="login" style="color: white;" >Ingresar</a>                               
-                                </div>
-                        {/if}
-                        
-                        {if isset($smarty.session.USER_EMAIL)}
+                            </div>      
+                       
+                        {else if isset($smarty.session.USER_EMAIL)}
                             <div class="d-flex align-items-center" style="color: white;" >
                                 <a class="nav-link " aria-current="page" href={ADMINISTRACION} style="color: white;" > Administración</a>
                                 <span>{$smarty.session.USER_EMAIL} </span>
@@ -48,8 +46,9 @@
                             </div>
                         {else}
                             <div class="d-flex align-items-center">
-                                <a class="nav-link " aria-current="page" href="loginResponsable" style="color: white;">Ingreso Privado</a>
-                                
+                               
+                                <a class="nav-link " aria-current="page" href="login" style="color: white;" >Ingresar</a>  
+                                 <a class="nav-link " aria-current="page" href="loginResponsable" style="color: white;">Ingreso Privado</a>
                             </div>
                         {/if}
                        </div>
