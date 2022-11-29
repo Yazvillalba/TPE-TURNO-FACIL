@@ -56,7 +56,7 @@ class AuthController{
             $user = $_POST['usuario'];
             $password = $_POST['password'];
             $userData = $this->pacienteModel->getUserData($user);
-            if (!empty($userData) && password_verify($password, $userData->password)){
+            if (!empty($userData) && password_verify($password, $userData->password) && $userData->id_rol == 1){
 
                 $this->authHelper->loginResponsable($userData);
                 header("Location: " . BASE_URL. 'administracion');

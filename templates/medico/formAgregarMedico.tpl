@@ -36,7 +36,7 @@
                                         {/foreach}
                                     </select> 
                                 </div>
-                               
+                                
                                 {if $error}
                                     <div class="alert alert-danger mt-3">
                                         {$error}
@@ -49,5 +49,8 @@
             </div>
         </div>
     </div>
+    <div class="mt-5 w-25 mx-auto">
+        <h3 class="text-center">Registro de Medicos</h3>
+    {include file ="templates/formRegister.tpl"}
 </div>
 {include file="templates/footer.tpl" }

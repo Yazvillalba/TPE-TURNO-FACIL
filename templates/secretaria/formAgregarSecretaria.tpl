@@ -32,6 +32,8 @@
             </div>
         </div>
     </div>
-
+    <div class="mt-5 w-25 mx-auto">
+        <h3 class="text-center">Registro de Secretarias</h3>
+        {include file ="templates/formRegister.tpl"}
 </div>
 {include file="templates/footer.tpl" }

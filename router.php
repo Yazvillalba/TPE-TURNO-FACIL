@@ -120,6 +120,10 @@ switch ($params[0]) {
     case 'confirmarAsignacionSecretaria': //se confirma la secretaria que se eligio en el select
         $responsable->confirmarAsignacionSecretaria();
        break;
+       case 'registro':
+            $responsable->createUser();
+        
+    break;
 }
 
 
